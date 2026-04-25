@@ -1,20 +1,12 @@
 tournament_round,team_a,team_b,score_a,score_b,match_result,match_winner,num_sub_rounds,url
 1,Czechia A,China,85.0,23.0,1:0,A,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/czechia-a-vs-china
-1,Czechia A,China?Authuser=0,85.0,23.0,1:0,A,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/czechia-a-vs-china?authuser=0
 1,Czechia D,Hungary C,101.0,7.0,1:0,A,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/czechia-d-vs-hungary-c
-1,Czechia D,Hungary C?Authuser=0,101.0,7.0,1:0,A,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/czechia-d-vs-hungary-c?authuser=0
 1,Hungary B,Hungary A,20.0,88.0,0:1,B,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/hungary-b-vs-hungary-a
-1,Hungary B,Hungary A?Authuser=0,20.0,88.0,0:1,B,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/hungary-b-vs-hungary-a?authuser=0
 1,Poland A,Czechia E,96.0,12.0,1:0,A,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/poland-a-vs-czechia-e
-1,Poland A,Czechia E?,96.0,12.0,1:0,A,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/poland-a-vs-czechia-e?
 1,Poland B,Czechia F,88.0,20.0,1:0,A,0,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/poland-b-vs-czechia-f
-1,Poland B,Czechia F?Authuser=0,88.0,20.0,1:0,A,0,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/poland-b-vs-czechia-f?authuser=0
 1,Slovakia,Czechia B,35.5,72.5,0:1,B,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/slovakia-vs-czechia-b
-1,Slovakia,Czechia B?Authuser=0,35.5,72.5,0:1,B,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/slovakia-vs-czechia-b?authuser=0
 1,Team International A,Team International B,82.0,26.0,1:0,A,0,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/team-international-a-vs-team-international-b
-1,Team International A,Team International B?Authuser=0,82.0,26.0,1:0,A,0,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/team-international-a-vs-team-international-b?authuser=0
 1,Team International C,Russia,12.0,96.0,0:1,B,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/team-international-c-vs-russia
-1,Team International C,Russia?Authuser=0,12.0,96.0,0:1,B,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/team-international-c-vs-russia?authuser=0
 1,Team International D,Czechia C,65.5,42.5,1:0,A,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-1/team-international-d-vs-czechia-c
 2,China,Team International A,29.0,79.0,0:1,B,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-2/china-vs-team-international-a
 2,Czechia B,Czechia D,86.0,22.0,1:0,A,3,https://sites.google.com/view/worldblitzcup/twbc-2026/matches/round-2/czechia-b-vs-czechia-d

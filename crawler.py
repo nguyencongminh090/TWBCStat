@@ -118,7 +118,9 @@ def parse_page(raw_html, t_round, url):
     text = strip_flags(text)
 
     # 2. Determine team names from URL slug to avoid nav bar pollution
-    slug = url.split("/")[-1]
+    # Strip query parameters (e.g. ?authuser=0) before slug extraction
+    clean_url = url.split("?")[0]
+    slug = clean_url.split("/")[-1]
     slug_fixed = slug.replace("-vsteam-", "-vs-team-").replace("vsteam-", "vs-team-")
     if "-vs-" in slug_fixed:
         slug_a, slug_b = slug_fixed.split("-vs-", 1)
@@ -278,14 +280,14 @@ def crawl_all(output_dir="."):
         return
         
     match_urls = {}
-    for m in re.finditer(r'href="([^"]*/twbc-2026/matches/round-(\d+)/([^"]+))"', html):
-        link = m.group(1)
+    for m in re.finditer(r'href="([^"]*/twbc-2026/matches/round-(\d+)/([^"?]+))"', html):
+        link = m.group(1).split("?")[0]   # strip query strings like ?authuser=0
         t_round = int(m.group(2))
         slug = m.group(3)
-        
+
         if not slug or "round-" in slug:
             continue
-            
+
         full_url = f"https://sites.google.com{link}" if link.startswith("/") else link
         if t_round not in match_urls:
             match_urls[t_round] = set()

@@ -5,12 +5,6 @@ tournament_round,match_id,player_name,player_nick,team,total_score,total_games,e
 1,Czechia A vs China,Liu Wenhao,wbcyu20,China,18.0,36,0.5
 1,Czechia A vs China,Liu Xiangbo,wbcuida,China,4.0,36,0.1111
 1,Czechia A vs China,Wang Haoran,wbc366,China,1.0,36,0.0278
-1,Czechia A vs China?Authuser=0,Adam Horváth,wbca,Czechia A,30.0,36,0.8333
-1,Czechia A vs China?Authuser=0,František Fňukal,wbcd,Czechia A,29.0,36,0.8056
-1,Czechia A vs China?Authuser=0,Petr Žižka,wbcc,Czechia A,26.0,36,0.7222
-1,Czechia A vs China?Authuser=0,Liu Wenhao,wbcyu20,China?Authuser=0,18.0,36,0.5
-1,Czechia A vs China?Authuser=0,Liu Xiangbo,wbcuida,China?Authuser=0,4.0,36,0.1111
-1,Czechia A vs China?Authuser=0,Wang Haoran,wbc366,China?Authuser=0,1.0,36,0.0278
 1,Czechia D vs Hungary C,Josef Holba,wbcwonderwall,Czechia D,33.0,36,0.9167
 1,Czechia D vs Hungary C,Tomáš Palacký,wbctasemnice,Czechia D,32.0,36,0.8889
 1,Czechia D vs Hungary C,Jakub Fojtík,wbcfojtman,Czechia D,24.0,24,1.0
@@ -18,13 +12,6 @@ tournament_round,match_id,player_name,player_nick,team,total_score,total_games,e
 1,Czechia D vs Hungary C,Csaba Kamarás,wbccsaba,Hungary C,3.0,36,0.0833
 1,Czechia D vs Hungary C,M. Nándor Halena,wbctorpe,Hungary C,2.0,36,0.0556
 1,Czechia D vs Hungary C,Krisztina Kamarás,wbckaktuszka,Hungary C,2.0,36,0.0556
-1,Czechia D vs Hungary C?Authuser=0,Josef Holba,wbcwonderwall,Czechia D,33.0,36,0.9167
-1,Czechia D vs Hungary C?Authuser=0,Tomáš Palacký,wbctasemnice,Czechia D,32.0,36,0.8889
-1,Czechia D vs Hungary C?Authuser=0,Jakub Fojtík,wbcfojtman,Czechia D,24.0,24,1.0
-1,Czechia D vs Hungary C?Authuser=0,Matěj Holub,wbcpiggi,Czechia D,12.0,12,1.0
-1,Czechia D vs Hungary C?Authuser=0,Csaba Kamarás,wbccsaba,Hungary C?Authuser=0,3.0,36,0.0833
-1,Czechia D vs Hungary C?Authuser=0,M. Nándor Halena,wbctorpe,Hungary C?Authuser=0,2.0,36,0.0556
-1,Czechia D vs Hungary C?Authuser=0,Krisztina Kamarás,wbckaktuszka,Hungary C?Authuser=0,2.0,36,0.0556
 1,Hungary B vs Hungary A,Gábor Nagy,wbcasz,Hungary B,8.0,36,0.2222
 1,Hungary B vs Hungary A,Róbert Pátkai,wbcnirvana,Hungary B,7.0,36,0.1944
 1,Hungary B vs Hungary A,Ferenc Rostás,wbcrostas,Hungary B,3.0,24,0.125
@@ -33,26 +20,12 @@ tournament_round,match_id,player_name,player_nick,team,total_score,total_games,e
 1,Hungary B vs Hungary A,Ciarán Lucey,wbcciaran,Hungary A,26.0,36,0.7222
 1,Hungary B vs Hungary A,Zoltán Sonkoly,wbciron,Hungary A,21.0,24,0.875
 1,Hungary B vs Hungary A,Márk Horváth,wbcmark,Hungary A,9.0,12,0.75
-1,Hungary B vs Hungary A?Authuser=0,Gábor Nagy,wbcasz,Hungary B,8.0,36,0.2222
-1,Hungary B vs Hungary A?Authuser=0,Róbert Pátkai,wbcnirvana,Hungary B,7.0,36,0.1944
-1,Hungary B vs Hungary A?Authuser=0,Ferenc Rostás,wbcrostas,Hungary B,3.0,24,0.125
-1,Hungary B vs Hungary A?Authuser=0,Zoltán Menyhárt,wbclasek,Hungary B,2.0,12,0.1667
-1,Hungary B vs Hungary A?Authuser=0,Zoltán László,wbczoli,Hungary A?Authuser=0,32.0,36,0.8889
-1,Hungary B vs Hungary A?Authuser=0,Ciarán Lucey,wbcciaran,Hungary A?Authuser=0,26.0,36,0.7222
-1,Hungary B vs Hungary A?Authuser=0,Zoltán Sonkoly,wbciron,Hungary A?Authuser=0,21.0,24,0.875
-1,Hungary B vs Hungary A?Authuser=0,Márk Horváth,wbcmark,Hungary A?Authuser=0,9.0,12,0.75
 1,Poland A vs Czechia E,Bogdan Brachaczek,wbcbb,Poland A,33.0,36,0.9167
 1,Poland A vs Czechia E,Michał Żukowski,wbcbeetle,Poland A,33.0,36,0.9167
 1,Poland A vs Czechia E,Michał Zajk,wbcpuholek,Poland A,30.0,36,0.8333
 1,Poland A vs Czechia E,Jan Kopecký,wbcdeafbat,Czechia E,8.0,36,0.2222
 1,Poland A vs Czechia E,Jan Purkrábek,wbcpurkys,Czechia E,2.0,36,0.0556
 1,Poland A vs Czechia E,Radim Kostlivý,wbcshpek,Czechia E,2.0,36,0.0556
-1,Poland A vs Czechia E?,Bogdan Brachaczek,wbcbb,Poland A,33.0,36,0.9167
-1,Poland A vs Czechia E?,Michał Żukowski,wbcbeetle,Poland A,33.0,36,0.9167
-1,Poland A vs Czechia E?,Michał Zajk,wbcpuholek,Poland A,30.0,36,0.8333
-1,Poland A vs Czechia E?,Jan Kopecký,wbcdeafbat,Czechia E?,8.0,36,0.2222
-1,Poland A vs Czechia E?,Jan Purkrábek,wbcpurkys,Czechia E?,2.0,36,0.0556
-1,Poland A vs Czechia E?,Radim Kostlivý,wbcshpek,Czechia E?,2.0,36,0.0556
 1,Poland B vs Czechia F,Piotr Małowiejski,wbcangst,Unknown,29.0,36,0.8056
 1,Poland B vs Czechia F,Paweł Nowak,wbcpeaceman,Unknown,28.0,36,0.7778
 1,Poland B vs Czechia F,Karol Podwyszyński,wbccrosslet,Unknown,20.0,24,0.8333
@@ -60,25 +33,12 @@ tournament_round,match_id,player_name,player_nick,team,total_score,total_games,e
 1,Poland B vs Czechia F,Jakub Šalajka,wbcvotocek,Unknown,12.0,36,0.3333
 1,Poland B vs Czechia F,Helena Gašová,wbcmikinovak,Unknown,5.0,36,0.1389
 1,Poland B vs Czechia F,Libor Krejčíř,wbcadelstepan,Unknown,3.0,36,0.0833
-1,Poland B vs Czechia F?Authuser=0,Piotr Małowiejski,wbcangst,Unknown,29.0,36,0.8056
-1,Poland B vs Czechia F?Authuser=0,Paweł Nowak,wbcpeaceman,Unknown,28.0,36,0.7778
-1,Poland B vs Czechia F?Authuser=0,Karol Podwyszyński,wbccrosslet,Unknown,20.0,24,0.8333
-1,Poland B vs Czechia F?Authuser=0,Michał Pietrusiak,wbcsiwer,Unknown,11.0,12,0.9167
-1,Poland B vs Czechia F?Authuser=0,Jakub Šalajka,wbcvotocek,Unknown,12.0,36,0.3333
-1,Poland B vs Czechia F?Authuser=0,Helena Gašová,wbcmikinovak,Unknown,5.0,36,0.1389
-1,Poland B vs Czechia F?Authuser=0,Libor Krejčíř,wbcadelstepan,Unknown,3.0,36,0.0833
 1,Slovakia vs Czechia B,Igor Eged,wbcg3m,Slovakia,23.0,36,0.6389
 1,Slovakia vs Czechia B,Milán Nagy,wbcgenghis,Slovakia,7.5,36,0.2083
 1,Slovakia vs Czechia B,Michal Ferdinandy,wbcmichi,Slovakia,5.0,36,0.1389
 1,Slovakia vs Czechia B,Lukáš Souček,wbciwbtc,Czechia B,25.5,36,0.7083
 1,Slovakia vs Czechia B,Martin Muzika,wbcmartez,Czechia B,25.0,36,0.6944
 1,Slovakia vs Czechia B,Jakub Horák,wbc3ifndef,Czechia B,22.0,36,0.6111
-1,Slovakia vs Czechia B?Authuser=0,Igor Eged,wbcg3m,Slovakia,23.0,36,0.6389
-1,Slovakia vs Czechia B?Authuser=0,Milán Nagy,wbcgenghis,Slovakia,7.5,36,0.2083
-1,Slovakia vs Czechia B?Authuser=0,Michal Ferdinandy,wbcmichi,Slovakia,5.0,36,0.1389
-1,Slovakia vs Czechia B?Authuser=0,Lukáš Souček,wbciwbtc,Czechia B?Authuser=0,25.5,36,0.7083
-1,Slovakia vs Czechia B?Authuser=0,Martin Muzika,wbcmartez,Czechia B?Authuser=0,25.0,36,0.6944
-1,Slovakia vs Czechia B?Authuser=0,Jakub Horák,wbc3ifndef,Czechia B?Authuser=0,22.0,36,0.6111
 1,Team International A vs Team International B,International A  Ashot Avetisyan,wbcashot,Unknown,32.0,36,0.8889
 1,Team International A vs Team International B,Matīss Riherts,wbcmatiss,Unknown,28.0,36,0.7778
 1,Team International A vs Team International B,Szczepan Łukasik,wbckremufka,Unknown,22.0,36,0.6111
@@ -86,13 +46,6 @@ tournament_round,match_id,player_name,player_nick,team,total_score,total_games,e
 1,Team International A vs Team International B,Anton Efremov,wbcbogimp,Unknown,8.0,36,0.2222
 1,Team International A vs Team International B,Eva Orlova,wbckakosik,Unknown,6.0,24,0.25
 1,Team International A vs Team International B,Hajnalka Kovács,wbchajnal,Unknown,2.0,12,0.1667
-1,Team International A vs Team International B?Authuser=0,International A  Ashot Avetisyan,wbcashot,Unknown,32.0,36,0.8889
-1,Team International A vs Team International B?Authuser=0,Matīss Riherts,wbcmatiss,Unknown,28.0,36,0.7778
-1,Team International A vs Team International B?Authuser=0,Szczepan Łukasik,wbckremufka,Unknown,22.0,36,0.6111
-1,Team International A vs Team International B?Authuser=0,B  Konstantin Solomatin,wbcset,Unknown,10.0,36,0.2778
-1,Team International A vs Team International B?Authuser=0,Anton Efremov,wbcbogimp,Unknown,8.0,36,0.2222
-1,Team International A vs Team International B?Authuser=0,Eva Orlova,wbckakosik,Unknown,6.0,24,0.25
-1,Team International A vs Team International B?Authuser=0,Hajnalka Kovács,wbchajnal,Unknown,2.0,12,0.1667
 1,Team International C vs Russia,C  Stanislav Hyžík jr.,wbccoldmind,Team International C,6.0,36,0.1667
 1,Team International C vs Russia,Jana Adámková,wbcseabow,Team International C,4.0,36,0.1111
 1,Team International C vs Russia,Michal Holec,wbcfuzaty,Team International C,1.0,24,0.0417
@@ -100,13 +53,6 @@ tournament_round,match_id,player_name,player_nick,team,total_score,total_games,e
 1,Team International C vs Russia,Alexey Lebedev,wbcalleb,Russia,33.0,36,0.9167
 1,Team International C vs Russia,Ilya Muratov,wbcfurla,Russia,33.0,36,0.9167
 1,Team International C vs Russia,Ilya Katsev,wbcbromozel,Russia,30.0,36,0.8333
-1,Team International C vs Russia?Authuser=0,C  Stanislav Hyžík jr.,wbccoldmind,Team International C,6.0,36,0.1667
-1,Team International C vs Russia?Authuser=0,Jana Adámková,wbcseabow,Team International C,4.0,36,0.1111
-1,Team International C vs Russia?Authuser=0,Michal Holec,wbcfuzaty,Team International C,1.0,24,0.0417
-1,Team International C vs Russia?Authuser=0,Stanislav Hyžík sr.,wbcgeordie,Team International C,1.0,12,0.0833
-1,Team International C vs Russia?Authuser=0,Alexey Lebedev,wbcalleb,Russia?Authuser=0,33.0,36,0.9167
-1,Team International C vs Russia?Authuser=0,Ilya Muratov,wbcfurla,Russia?Authuser=0,33.0,36,0.9167
-1,Team International C vs Russia?Authuser=0,Ilya Katsev,wbcbromozel,Russia?Authuser=0,30.0,36,0.8333
 1,Team International D vs Czechia C,Štěpán Tesařík,wbcperoxid,Team International D,23.0,36,0.6389
 1,Team International D vs Czechia C,Alois Mikeš,wbclojzeidon,Team International D,21.5,36,0.5972
 1,Team International D vs Czechia C,Petr Podolský,wbcdistilfire,Team International D,21.0,36,0.5833

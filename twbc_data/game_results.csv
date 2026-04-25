@@ -8,15 +8,6 @@ tournament_round,match_id,sub_round,sub_round_score_a,sub_round_score_b,player_a
 1,Czechia A vs China,3,28.0,8.0,Adam Horváth,wbca,Czechia A,Wang Haoran,wbc366,China,12.0,0.0,12.0,A
 1,Czechia A vs China,3,28.0,8.0,František Fňukal,wbcd,Czechia A,Liu Wenhao,wbcyu20,China,6.0,6.0,12.0,Draw
 1,Czechia A vs China,3,28.0,8.0,Petr Žižka,wbcc,Czechia A,Liu Xiangbo,wbcuida,China,10.0,2.0,12.0,A
-1,Czechia A vs China?Authuser=0,1,28.0,8.0,Adam Horváth,wbca,Czechia A,Liu Xiangbo,wbcuida,China?Authuser=0,11.0,1.0,12.0,A
-1,Czechia A vs China?Authuser=0,1,28.0,8.0,František Fňukal,wbcd,Czechia A,Wang Haoran,wbc366,China?Authuser=0,12.0,0.0,12.0,A
-1,Czechia A vs China?Authuser=0,1,28.0,8.0,Petr Žižka,wbcc,Czechia A,Liu Wenhao,wbcyu20,China?Authuser=0,5.0,7.0,12.0,B
-1,Czechia A vs China?Authuser=0,2,29.0,7.0,Adam Horváth,wbca,Czechia A,Liu Wenhao,wbcyu20,China?Authuser=0,7.0,5.0,12.0,A
-1,Czechia A vs China?Authuser=0,2,29.0,7.0,František Fňukal,wbcd,Czechia A,Liu Xiangbo,wbcuida,China?Authuser=0,11.0,1.0,12.0,A
-1,Czechia A vs China?Authuser=0,2,29.0,7.0,Petr Žižka,wbcc,Czechia A,Wang Haoran,wbc366,China?Authuser=0,11.0,1.0,12.0,A
-1,Czechia A vs China?Authuser=0,3,28.0,8.0,Adam Horváth,wbca,Czechia A,Wang Haoran,wbc366,China?Authuser=0,12.0,0.0,12.0,A
-1,Czechia A vs China?Authuser=0,3,28.0,8.0,František Fňukal,wbcd,Czechia A,Liu Wenhao,wbcyu20,China?Authuser=0,6.0,6.0,12.0,Draw
-1,Czechia A vs China?Authuser=0,3,28.0,8.0,Petr Žižka,wbcc,Czechia A,Liu Xiangbo,wbcuida,China?Authuser=0,10.0,2.0,12.0,A
 1,Czechia D vs Hungary C,1,33.0,3.0,Jakub Fojtík,wbcfojtman,Czechia D,Csaba Kamarás,wbccsaba,Hungary C,12.0,0.0,12.0,A
 1,Czechia D vs Hungary C,1,33.0,3.0,Josef Holba,wbcwonderwall,Czechia D,Krisztina Kamarás,wbckaktuszka,Hungary C,11.0,1.0,12.0,A
 1,Czechia D vs Hungary C,1,33.0,3.0,Tomáš Palacký,wbctasemnice,Czechia D,M. Nándor Halena,wbctorpe,Hungary C,10.0,2.0,12.0,A
@@ -26,15 +17,6 @@ tournament_round,match_id,sub_round,sub_round_score_a,sub_round_score_b,player_a
 1,Czechia D vs Hungary C,3,35.0,1.0,Matěj Holub,wbcpiggi,Czechia D,Krisztina Kamarás,wbckaktuszka,Hungary C,12.0,0.0,12.0,A
 1,Czechia D vs Hungary C,3,35.0,1.0,Josef Holba,wbcwonderwall,Czechia D,M. Nándor Halena,wbctorpe,Hungary C,12.0,0.0,12.0,A
 1,Czechia D vs Hungary C,3,35.0,1.0,Tomáš Palacký,wbctasemnice,Czechia D,Csaba Kamarás,wbccsaba,Hungary C,11.0,1.0,12.0,A
-1,Czechia D vs Hungary C?Authuser=0,1,33.0,3.0,Jakub Fojtík,wbcfojtman,Czechia D,Csaba Kamarás,wbccsaba,Hungary C?Authuser=0,12.0,0.0,12.0,A
-1,Czechia D vs Hungary C?Authuser=0,1,33.0,3.0,Josef Holba,wbcwonderwall,Czechia D,Krisztina Kamarás,wbckaktuszka,Hungary C?Authuser=0,11.0,1.0,12.0,A
-1,Czechia D vs Hungary C?Authuser=0,1,33.0,3.0,Tomáš Palacký,wbctasemnice,Czechia D,M. Nándor Halena,wbctorpe,Hungary C?Authuser=0,10.0,2.0,12.0,A
-1,Czechia D vs Hungary C?Authuser=0,2,33.0,3.0,Jakub Fojtík,wbcfojtman,Czechia D,M. Nándor Halena,wbctorpe,Hungary C?Authuser=0,12.0,0.0,12.0,A
-1,Czechia D vs Hungary C?Authuser=0,2,33.0,3.0,Josef Holba,wbcwonderwall,Czechia D,Csaba Kamarás,wbccsaba,Hungary C?Authuser=0,10.0,2.0,12.0,A
-1,Czechia D vs Hungary C?Authuser=0,2,33.0,3.0,Tomáš Palacký,wbctasemnice,Czechia D,Krisztina Kamarás,wbckaktuszka,Hungary C?Authuser=0,11.0,1.0,12.0,A
-1,Czechia D vs Hungary C?Authuser=0,3,35.0,1.0,Matěj Holub,wbcpiggi,Czechia D,Krisztina Kamarás,wbckaktuszka,Hungary C?Authuser=0,12.0,0.0,12.0,A
-1,Czechia D vs Hungary C?Authuser=0,3,35.0,1.0,Josef Holba,wbcwonderwall,Czechia D,M. Nándor Halena,wbctorpe,Hungary C?Authuser=0,12.0,0.0,12.0,A
-1,Czechia D vs Hungary C?Authuser=0,3,35.0,1.0,Tomáš Palacký,wbctasemnice,Czechia D,Csaba Kamarás,wbccsaba,Hungary C?Authuser=0,11.0,1.0,12.0,A
 1,Hungary B vs Hungary A,1,7.0,29.0,Ferenc Rostás,wbcrostas,Hungary B,Zoltán Sonkoly,wbciron,Hungary A,2.0,10.0,12.0,B
 1,Hungary B vs Hungary A,1,7.0,29.0,Róbert Pátkai,wbcnirvana,Hungary B,Ciarán Lucey,wbcciaran,Hungary A,4.0,8.0,12.0,B
 1,Hungary B vs Hungary A,1,7.0,29.0,Gábor Nagy,wbcasz,Hungary B,Zoltán László,wbczoli,Hungary A,1.0,11.0,12.0,B
@@ -44,15 +26,6 @@ tournament_round,match_id,sub_round,sub_round_score_a,sub_round_score_b,player_a
 1,Hungary B vs Hungary A,3,7.0,29.0,Róbert Pátkai,wbcnirvana,Hungary B,Zoltán László,wbczoli,Hungary A,2.0,10.0,12.0,B
 1,Hungary B vs Hungary A,3,7.0,29.0,Gábor Nagy,wbcasz,Hungary B,Márk Horváth,wbcmark,Hungary A,3.0,9.0,12.0,B
 1,Hungary B vs Hungary A,3,7.0,29.0,Zoltán Menyhárt,wbclasek,Hungary B,Ciarán Lucey,wbcciaran,Hungary A,2.0,10.0,12.0,B
-1,Hungary B vs Hungary A?Authuser=0,1,7.0,29.0,Ferenc Rostás,wbcrostas,Hungary B,Zoltán Sonkoly,wbciron,Hungary A?Authuser=0,2.0,10.0,12.0,B
-1,Hungary B vs Hungary A?Authuser=0,1,7.0,29.0,Róbert Pátkai,wbcnirvana,Hungary B,Ciarán Lucey,wbcciaran,Hungary A?Authuser=0,4.0,8.0,12.0,B
-1,Hungary B vs Hungary A?Authuser=0,1,7.0,29.0,Gábor Nagy,wbcasz,Hungary B,Zoltán László,wbczoli,Hungary A?Authuser=0,1.0,11.0,12.0,B
-1,Hungary B vs Hungary A?Authuser=0,2,6.0,30.0,Ferenc Rostás,wbcrostas,Hungary B,Zoltán László,wbczoli,Hungary A?Authuser=0,1.0,11.0,12.0,B
-1,Hungary B vs Hungary A?Authuser=0,2,6.0,30.0,Róbert Pátkai,wbcnirvana,Hungary B,Zoltán Sonkoly,wbciron,Hungary A?Authuser=0,1.0,11.0,12.0,B
-1,Hungary B vs Hungary A?Authuser=0,2,6.0,30.0,Gábor Nagy,wbcasz,Hungary B,Ciarán Lucey,wbcciaran,Hungary A?Authuser=0,4.0,8.0,12.0,B
-1,Hungary B vs Hungary A?Authuser=0,3,7.0,29.0,Róbert Pátkai,wbcnirvana,Hungary B,Zoltán László,wbczoli,Hungary A?Authuser=0,2.0,10.0,12.0,B
-1,Hungary B vs Hungary A?Authuser=0,3,7.0,29.0,Gábor Nagy,wbcasz,Hungary B,Márk Horváth,wbcmark,Hungary A?Authuser=0,3.0,9.0,12.0,B
-1,Hungary B vs Hungary A?Authuser=0,3,7.0,29.0,Zoltán Menyhárt,wbclasek,Hungary B,Ciarán Lucey,wbcciaran,Hungary A?Authuser=0,2.0,10.0,12.0,B
 1,Poland A vs Czechia E,1,33.0,3.0,Michał Żukowski,wbcbeetle,Poland A,Jan Purkrábek,wbcpurkys,Czechia E,12.0,0.0,12.0,A
 1,Poland A vs Czechia E,1,33.0,3.0,Bogdan Brachaczek,wbcbb,Poland A,Jan Kopecký,wbcdeafbat,Czechia E,10.0,2.0,12.0,A
 1,Poland A vs Czechia E,1,33.0,3.0,Michał Zajk,wbcpuholek,Poland A,Radim Kostlivý,wbcshpek,Czechia E,11.0,1.0,12.0,A
@@ -62,15 +35,6 @@ tournament_round,match_id,sub_round,sub_round_score_a,sub_round_score_b,player_a
 1,Poland A vs Czechia E,3,33.0,3.0,Michał Żukowski,wbcbeetle,Poland A,Radim Kostlivý,wbcshpek,Czechia E,12.0,0.0,12.0,A
 1,Poland A vs Czechia E,3,33.0,3.0,Bogdan Brachaczek,wbcbb,Poland A,Jan Purkrábek,wbcpurkys,Czechia E,12.0,0.0,12.0,A
 1,Poland A vs Czechia E,3,33.0,3.0,Michał Zajk,wbcpuholek,Poland A,Jan Kopecký,wbcdeafbat,Czechia E,9.0,3.0,12.0,A
-1,Poland A vs Czechia E?,1,33.0,3.0,Michał Żukowski,wbcbeetle,Poland A,Jan Purkrábek,wbcpurkys,Czechia E?,12.0,0.0,12.0,A
-1,Poland A vs Czechia E?,1,33.0,3.0,Bogdan Brachaczek,wbcbb,Poland A,Jan Kopecký,wbcdeafbat,Czechia E?,10.0,2.0,12.0,A
-1,Poland A vs Czechia E?,1,33.0,3.0,Michał Zajk,wbcpuholek,Poland A,Radim Kostlivý,wbcshpek,Czechia E?,11.0,1.0,12.0,A
-1,Poland A vs Czechia E?,2,30.0,6.0,Michał Żukowski,wbcbeetle,Poland A,Jan Kopecký,wbcdeafbat,Czechia E?,9.0,3.0,12.0,A
-1,Poland A vs Czechia E?,2,30.0,6.0,Bogdan Brachaczek,wbcbb,Poland A,Radim Kostlivý,wbcshpek,Czechia E?,11.0,1.0,12.0,A
-1,Poland A vs Czechia E?,2,30.0,6.0,Michał Zajk,wbcpuholek,Poland A,Jan Purkrábek,wbcpurkys,Czechia E?,10.0,2.0,12.0,A
-1,Poland A vs Czechia E?,3,33.0,3.0,Michał Żukowski,wbcbeetle,Poland A,Radim Kostlivý,wbcshpek,Czechia E?,12.0,0.0,12.0,A
-1,Poland A vs Czechia E?,3,33.0,3.0,Bogdan Brachaczek,wbcbb,Poland A,Jan Purkrábek,wbcpurkys,Czechia E?,12.0,0.0,12.0,A
-1,Poland A vs Czechia E?,3,33.0,3.0,Michał Zajk,wbcpuholek,Poland A,Jan Kopecký,wbcdeafbat,Czechia E?,9.0,3.0,12.0,A
 1,Slovakia vs Czechia B,1,13.0,23.0,Igor Eged,wbcg3m,Slovakia,Lukáš Souček,wbciwbtc,Czechia B,7.5,4.5,12.0,A
 1,Slovakia vs Czechia B,1,13.0,23.0,Michal Ferdinandy,wbcmichi,Slovakia,Jakub Horák,wbc3ifndef,Czechia B,3.0,9.0,12.0,B
 1,Slovakia vs Czechia B,1,13.0,23.0,Milán Nagy,wbcgenghis,Slovakia,Martin Muzika,wbcmartez,Czechia B,2.5,9.5,12.0,B
@@ -80,15 +44,6 @@ tournament_round,match_id,sub_round,sub_round_score_a,sub_round_score_b,player_a
 1,Slovakia vs Czechia B,3,14.0,22.0,Igor Eged,wbcg3m,Slovakia,Jakub Horák,wbc3ifndef,Czechia B,9.0,3.0,12.0,A
 1,Slovakia vs Czechia B,3,14.0,22.0,Michal Ferdinandy,wbcmichi,Slovakia,Martin Muzika,wbcmartez,Czechia B,2.0,10.0,12.0,B
 1,Slovakia vs Czechia B,3,14.0,22.0,Milán Nagy,wbcgenghis,Slovakia,Lukáš Souček,wbciwbtc,Czechia B,3.0,9.0,12.0,B
-1,Slovakia vs Czechia B?Authuser=0,1,13.0,23.0,Igor Eged,wbcg3m,Slovakia,Lukáš Souček,wbciwbtc,Czechia B?Authuser=0,7.5,4.5,12.0,A
-1,Slovakia vs Czechia B?Authuser=0,1,13.0,23.0,Michal Ferdinandy,wbcmichi,Slovakia,Jakub Horák,wbc3ifndef,Czechia B?Authuser=0,3.0,9.0,12.0,B
-1,Slovakia vs Czechia B?Authuser=0,1,13.0,23.0,Milán Nagy,wbcgenghis,Slovakia,Martin Muzika,wbcmartez,Czechia B?Authuser=0,2.5,9.5,12.0,B
-1,Slovakia vs Czechia B?Authuser=0,2,8.5,27.5,Igor Eged,wbcg3m,Slovakia,Martin Muzika,wbcmartez,Czechia B?Authuser=0,6.5,5.5,12.0,A
-1,Slovakia vs Czechia B?Authuser=0,2,8.5,27.5,Michal Ferdinandy,wbcmichi,Slovakia,Lukáš Souček,wbciwbtc,Czechia B?Authuser=0,0.0,12.0,12.0,B
-1,Slovakia vs Czechia B?Authuser=0,2,8.5,27.5,Milán Nagy,wbcgenghis,Slovakia,Jakub Horák,wbc3ifndef,Czechia B?Authuser=0,2.0,10.0,12.0,B
-1,Slovakia vs Czechia B?Authuser=0,3,14.0,22.0,Igor Eged,wbcg3m,Slovakia,Jakub Horák,wbc3ifndef,Czechia B?Authuser=0,9.0,3.0,12.0,A
-1,Slovakia vs Czechia B?Authuser=0,3,14.0,22.0,Michal Ferdinandy,wbcmichi,Slovakia,Martin Muzika,wbcmartez,Czechia B?Authuser=0,2.0,10.0,12.0,B
-1,Slovakia vs Czechia B?Authuser=0,3,14.0,22.0,Milán Nagy,wbcgenghis,Slovakia,Lukáš Souček,wbciwbtc,Czechia B?Authuser=0,3.0,9.0,12.0,B
 1,Team International C vs Russia,1,6.0,30.0,Stanislav Hyžík jr.,wbccoldmind,Team International C,Ilya Muratov,wbcfurla,Russia,2.0,10.0,12.0,B
 1,Team International C vs Russia,1,6.0,30.0,Jana Adámková,wbcseabow,Team International C,Ilya Katsev,wbcbromozel,Russia,3.0,9.0,12.0,B
 1,Team International C vs Russia,1,6.0,30.0,Stanislav Hyžík sr.,wbcgeordie,Team International C,Alexey Lebedev,wbcalleb,Russia,1.0,11.0,12.0,B
@@ -98,15 +53,6 @@ tournament_round,match_id,sub_round,sub_round_score_a,sub_round_score_b,player_a
 1,Team International C vs Russia,3,4.0,32.0,Stanislav Hyžík jr.,wbccoldmind,Team International C,Alexey Lebedev,wbcalleb,Russia,2.0,10.0,12.0,B
 1,Team International C vs Russia,3,4.0,32.0,Jana Adámková,wbcseabow,Team International C,Ilya Muratov,wbcfurla,Russia,1.0,11.0,12.0,B
 1,Team International C vs Russia,3,4.0,32.0,Michal Holec,wbcfuzaty,Team International C,Ilya Katsev,wbcbromozel,Russia,1.0,11.0,12.0,B
-1,Team International C vs Russia?Authuser=0,1,6.0,30.0,Stanislav Hyžík jr.,wbccoldmind,Team International C,Ilya Muratov,wbcfurla,Russia?Authuser=0,2.0,10.0,12.0,B
-1,Team International C vs Russia?Authuser=0,1,6.0,30.0,Jana Adámková,wbcseabow,Team International C,Ilya Katsev,wbcbromozel,Russia?Authuser=0,3.0,9.0,12.0,B
-1,Team International C vs Russia?Authuser=0,1,6.0,30.0,Stanislav Hyžík sr.,wbcgeordie,Team International C,Alexey Lebedev,wbcalleb,Russia?Authuser=0,1.0,11.0,12.0,B
-1,Team International C vs Russia?Authuser=0,2,2.0,34.0,Stanislav Hyžík jr.,wbccoldmind,Team International C,Ilya Katsev,wbcbromozel,Russia?Authuser=0,2.0,10.0,12.0,B
-1,Team International C vs Russia?Authuser=0,2,2.0,34.0,Jana Adámková,wbcseabow,Team International C,Alexey Lebedev,wbcalleb,Russia?Authuser=0,0.0,12.0,12.0,B
-1,Team International C vs Russia?Authuser=0,2,2.0,34.0,Michal Holec,wbcfuzaty,Team International C,Ilya Muratov,wbcfurla,Russia?Authuser=0,0.0,12.0,12.0,B
-1,Team International C vs Russia?Authuser=0,3,4.0,32.0,Stanislav Hyžík jr.,wbccoldmind,Team International C,Alexey Lebedev,wbcalleb,Russia?Authuser=0,2.0,10.0,12.0,B
-1,Team International C vs Russia?Authuser=0,3,4.0,32.0,Jana Adámková,wbcseabow,Team International C,Ilya Muratov,wbcfurla,Russia?Authuser=0,1.0,11.0,12.0,B
-1,Team International C vs Russia?Authuser=0,3,4.0,32.0,Michal Holec,wbcfuzaty,Team International C,Ilya Katsev,wbcbromozel,Russia?Authuser=0,1.0,11.0,12.0,B
 1,Team International D vs Czechia C,1,22.5,13.5,Alois Mikeš,wbclojzeidon,Team International D,Li Fuwen,wbcplayer,Czechia C,7.5,4.5,12.0,A
 1,Team International D vs Czechia C,1,22.5,13.5,Štěpán Tesařík,wbcperoxid,Team International D,Wang Siyuan,wbc1211,Czechia C,12.0,0.0,12.0,A
 1,Team International D vs Czechia C,1,22.5,13.5,Petr Podolský,wbcdistilfire,Team International D,Nguyễn Công Minh,wbcnguyenminh,Czechia C,3.0,9.0,12.0,B
