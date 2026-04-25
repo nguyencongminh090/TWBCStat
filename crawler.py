@@ -19,41 +19,7 @@ from dataclasses import dataclass, asdict
 
 BASE = "https://sites.google.com/view/worldblitzcup"
 
-MATCH_URLS = {
-    1: [
-        f"{BASE}/twbc-2026/matches/round-1/poland-a-vs-czechia-e",
-        f"{BASE}/twbc-2026/matches/round-1/hungary-b-vs-hungary-a",
-        f"{BASE}/twbc-2026/matches/round-1/czechia-a-vs-china",
-        f"{BASE}/twbc-2026/matches/round-1/slovakia-vs-czechia-b",
-        f"{BASE}/twbc-2026/matches/round-1/team-international-a-vs-team-international-b",
-        f"{BASE}/twbc-2026/matches/round-1/team-international-c-vs-russia",
-        f"{BASE}/twbc-2026/matches/round-1/poland-b-vs-czechia-f",
-        f"{BASE}/twbc-2026/matches/round-1/team-international-d-vs-czechia-c",
-        f"{BASE}/twbc-2026/matches/round-1/czechia-d-vs-hungary-c",
-    ],
-    2: [
-        f"{BASE}/twbc-2026/matches/round-2/czechia-b-vs-czechia-d",
-        f"{BASE}/twbc-2026/matches/round-2/czechia-c-vs-poland-a",
-        f"{BASE}/twbc-2026/matches/round-2/russia-vs-poland-b",
-        f"{BASE}/twbc-2026/matches/round-2/hungary-a-vs-czechia-a",
-        f"{BASE}/twbc-2026/matches/round-2/china-vs-team-international-a",
-        f"{BASE}/twbc-2026/matches/round-2/czechia-f-vs-team-international-d",
-        f"{BASE}/twbc-2026/matches/round-2/czechia-e-vs-slovakia",
-        f"{BASE}/twbc-2026/matches/round-2/team-international-b-vs-team-international-c",
-        f"{BASE}/twbc-2026/matches/round-2/hungary-c-vs-hungary-b",
-    ],
-    3: [
-        f"{BASE}/twbc-2026/matches/round-3/russia-vs-team-international-a",
-        f"{BASE}/twbc-2026/matches/round-3/czechia-c-vs-poland-b",
-        f"{BASE}/twbc-2026/matches/round-3/czechia-d-vs-hungary-a",
-        f"{BASE}/twbc-2026/matches/round-3/czechia-f-vs-slovakia",
-        f"{BASE}/twbc-2026/matches/round-3/czechia-b-vs-poland-a",
-        f"{BASE}/twbc-2026/matches/round-3/hungary-b-vs-team-international-d",
-        f"{BASE}/twbc-2026/matches/round-3/czechia-a-vsteam-international-b",
-        f"{BASE}/twbc-2026/matches/round-3/hungary-c-vs-china",
-        f"{BASE}/twbc-2026/matches/round-3/team-international-c-vs-czechia-e",
-    ],
-}
+# Match URLs will be discovered dynamically
 
 HEADERS = {
     "User-Agent": (
@@ -128,7 +94,7 @@ def fetch(url, session):
 
 def strip_flags(text):
     text = re.sub(r'[\U0001F1E0-\U0001F1FF]{2}', '', text)   # national flags
-    text = re.sub(r'[\U0001F30D-\U0001F30F]', '', text)       # globe emoji
+    text = re.sub(r'[\U0001F30D-\U0001F30F]', '', text)      # globe emoji
     return text
 
 def winner(a, b):
@@ -170,9 +136,13 @@ def parse_page(raw_html, t_round, url):
     team_b = slug_to_team(slug_b)
     match_id = f"{team_a} vs {team_b}"
 
-    # 3. Parse match header and slice content
-    score_match = re.search(r'(\d+):(\d+)\s+\(([\d.]+):([\d.]+)\)', text)
+    # 3. Parse match header score from raw_html (sometimes it's only in the meta og:description)
+    score_match = re.search(r'([\d.½/]+)\s*:\s*([\d.½/]+)\s*(?:<[^>]+>\s*)*\(\s*([\d.]+)\s*:\s*([\d.]+)\s*\)', raw_html)
     if not score_match:
+        with open("debug_html.txt", "w", encoding="utf-8") as f:
+            f.write(raw_html)
+        with open("debug_text.txt", "w", encoding="utf-8") as f:
+            f.write(text)
         print(f"    ! Cannot parse match header score in {url}")
         return None, [], []
 
@@ -180,8 +150,9 @@ def parse_page(raw_html, t_round, url):
     score_a = float(score_match.group(3))
     score_b = float(score_match.group(4))
 
-    # The actual body content starts after the match header
-    content = text[score_match.end():]
+    # We no longer need to slice the nav bar away because SR_RE and SUM_RE 
+    # look for specific keywords (ROUND, Final result) that don't appear in the nav bar.
+    content = text
 
     # Trim at page footer
     footer_m = re.search(r'Google Sites|Report abuse', content)
@@ -297,9 +268,37 @@ def parse_page(raw_html, t_round, url):
 
 def crawl_all(output_dir="."):
     session = requests.Session()
+    
+    print("Discovering match URLs from website...")
+    index_url = f"{BASE}/twbc-2026/matches/pairings"
+    try:
+        html = fetch(index_url, session)
+    except Exception as e:
+        print(f"Failed to fetch index page: {e}")
+        return
+        
+    match_urls = {}
+    for m in re.finditer(r'href="([^"]*/twbc-2026/matches/round-(\d+)/([^"]+))"', html):
+        link = m.group(1)
+        t_round = int(m.group(2))
+        slug = m.group(3)
+        
+        if not slug or "round-" in slug:
+            continue
+            
+        full_url = f"https://sites.google.com{link}" if link.startswith("/") else link
+        if t_round not in match_urls:
+            match_urls[t_round] = set()
+        match_urls[t_round].add(full_url)
+        
+    match_urls = {k: sorted(list(v)) for k, v in match_urls.items()}
+    total_matches = sum(len(v) for v in match_urls.values())
+    print(f"Discovered {total_matches} matches across {len(match_urls)} rounds.")
+
     all_matches, all_games, all_summaries = [], [], []
 
-    for t_round, urls in MATCH_URLS.items():
+    for t_round in sorted(match_urls.keys()):
+        urls = match_urls[t_round]
         print(f"\n=== TOURNAMENT ROUND {t_round} ===")
         for url in urls:
             slug = url.split("/")[-1]
