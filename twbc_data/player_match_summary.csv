@@ -1,0 +1,164 @@
+tournament_round,match_id,player_name,player_nick,team,total_score,total_games,efficiency
+1,Poland A vs Czechia E,Bogdan Brachaczek,wbcbb,Poland A,33.0,36,0.9167
+1,Poland A vs Czechia E,Michał Żukowski,wbcbeetle,Poland A,33.0,36,0.9167
+1,Poland A vs Czechia E,Michał Zajk,wbcpuholek,Poland A,30.0,36,0.8333
+1,Poland A vs Czechia E,Jan Kopecký,wbcdeafbat,Czechia E,8.0,36,0.2222
+1,Poland A vs Czechia E,Jan Purkrábek,wbcpurkys,Czechia E,2.0,36,0.0556
+1,Poland A vs Czechia E,Radim Kostlivý,wbcshpek,Czechia E,2.0,36,0.0556
+1,Hungary B vs Hungary A,Gábor Nagy,wbcasz,Hungary B,8.0,36,0.2222
+1,Hungary B vs Hungary A,Róbert Pátkai,wbcnirvana,Hungary B,7.0,36,0.1944
+1,Hungary B vs Hungary A,Ferenc Rostás,wbcrostas,Hungary B,3.0,24,0.125
+1,Hungary B vs Hungary A,Zoltán Menyhárt,wbclasek,Hungary B,2.0,12,0.1667
+1,Hungary B vs Hungary A,Zoltán László,wbczoli,Hungary A,32.0,36,0.8889
+1,Hungary B vs Hungary A,Ciarán Lucey,wbcciaran,Hungary A,26.0,36,0.7222
+1,Hungary B vs Hungary A,Zoltán Sonkoly,wbciron,Hungary A,21.0,24,0.875
+1,Hungary B vs Hungary A,Márk Horváth,wbcmark,Hungary A,9.0,12,0.75
+1,Czechia A vs China,Adam Horváth,wbca,Czechia A,30.0,36,0.8333
+1,Czechia A vs China,František Fňukal,wbcd,Czechia A,29.0,36,0.8056
+1,Czechia A vs China,Petr Žižka,wbcc,Czechia A,26.0,36,0.7222
+1,Czechia A vs China,Liu Wenhao,wbcyu20,China,18.0,36,0.5
+1,Czechia A vs China,Liu Xiangbo,wbcuida,China,4.0,36,0.1111
+1,Czechia A vs China,Wang Haoran,wbc366,China,1.0,36,0.0278
+1,Slovakia vs Czechia B,Igor Eged,wbcg3m,Slovakia,23.0,36,0.6389
+1,Slovakia vs Czechia B,Milán Nagy,wbcgenghis,Slovakia,7.5,36,0.2083
+1,Slovakia vs Czechia B,Michal Ferdinandy,wbcmichi,Slovakia,5.0,36,0.1389
+1,Slovakia vs Czechia B,Lukáš Souček,wbciwbtc,Czechia B,25.5,36,0.7083
+1,Slovakia vs Czechia B,Martin Muzika,wbcmartez,Czechia B,25.0,36,0.6944
+1,Slovakia vs Czechia B,Jakub Horák,wbc3ifndef,Czechia B,22.0,36,0.6111
+1,Team International C vs Russia,C  Stanislav Hyžík jr.,wbccoldmind,Team International C,6.0,36,0.1667
+1,Team International C vs Russia,Jana Adámková,wbcseabow,Team International C,4.0,36,0.1111
+1,Team International C vs Russia,Michal Holec,wbcfuzaty,Team International C,1.0,24,0.0417
+1,Team International C vs Russia,Stanislav Hyžík sr.,wbcgeordie,Team International C,1.0,12,0.0833
+1,Team International C vs Russia,Alexey Lebedev,wbcalleb,Russia,33.0,36,0.9167
+1,Team International C vs Russia,Ilya Muratov,wbcfurla,Russia,33.0,36,0.9167
+1,Team International C vs Russia,Ilya Katsev,wbcbromozel,Russia,30.0,36,0.8333
+1,Team International D vs Czechia C,Štěpán Tesařík,wbcperoxid,Team International D,23.0,36,0.6389
+1,Team International D vs Czechia C,Alois Mikeš,wbclojzeidon,Team International D,21.5,36,0.5972
+1,Team International D vs Czechia C,Petr Podolský,wbcdistilfire,Team International D,21.0,36,0.5833
+1,Team International D vs Czechia C,International D  Nguyễn Công Minh,wbcnguyenminh,Czechia C,24.0,36,0.6667
+1,Team International D vs Czechia C,Li Fuwen,wbcplayer,Czechia C,16.5,36,0.4583
+1,Team International D vs Czechia C,Wang Siyuan,wbc1211,Czechia C,2.0,36,0.0556
+1,Czechia D vs Hungary C,Josef Holba,wbcwonderwall,Czechia D,33.0,36,0.9167
+1,Czechia D vs Hungary C,Tomáš Palacký,wbctasemnice,Czechia D,32.0,36,0.8889
+1,Czechia D vs Hungary C,Jakub Fojtík,wbcfojtman,Czechia D,24.0,24,1.0
+1,Czechia D vs Hungary C,Matěj Holub,wbcpiggi,Czechia D,12.0,12,1.0
+1,Czechia D vs Hungary C,Csaba Kamarás,wbccsaba,Hungary C,3.0,36,0.0833
+1,Czechia D vs Hungary C,M. Nándor Halena,wbctorpe,Hungary C,2.0,36,0.0556
+1,Czechia D vs Hungary C,Krisztina Kamarás,wbckaktuszka,Hungary C,2.0,36,0.0556
+2,Czechia B vs Czechia D,Jakub Horák,wbc3ifndef,Czechia B,28.0,36,0.7778
+2,Czechia B vs Czechia D,Martin Muzika,wbcmartez,Czechia B,30.0,36,0.8333
+2,Czechia B vs Czechia D,Lukáš Souček,wbciwbtc,Czechia B,28.0,36,0.7778
+2,Czechia B vs Czechia D,Jakub Fojtík,wbcfojtman,Czechia D,7.0,36,0.1944
+2,Czechia B vs Czechia D,Matěj Holub,wbcpiggi,Czechia D,9.0,36,0.25
+2,Czechia B vs Czechia D,Tomáš Palacký,wbctasemnice,Czechia D,6.0,36,0.1667
+2,Czechia C vs Poland A,Alois Mikeš,wbclojzeidon,Czechia C,6.0,36,0.1667
+2,Czechia C vs Poland A,Štěpán Tesařík,wbcperoxid,Czechia C,9.0,36,0.25
+2,Czechia C vs Poland A,Petr Podolský,wbcdistilfire,Czechia C,5.0,36,0.1389
+2,Czechia C vs Poland A,Adrian Fitzermann,wbcquantum,Poland A,33.0,36,0.9167
+2,Czechia C vs Poland A,Bogdan Brachaczek,wbcbb,Poland A,27.0,36,0.75
+2,Czechia C vs Poland A,Michał Zajk,wbcpuholek,Poland A,18.0,24,0.75
+2,Czechia C vs Poland A,Michał Żukowski,wbcbeetle,Poland A,10.0,12,0.8333
+2,Russia vs Poland B,Denis Kachaev,wbcmk108,Russia,26.0,36,0.7222
+2,Russia vs Poland B,Alexey Lebedev,wbcalleb,Russia,25.0,36,0.6944
+2,Russia vs Poland B,Ilya Muratov,wbcfurla,Russia,24.0,36,0.6667
+2,Russia vs Poland B,Michał Pietrusiak,wbcsiwer,Poland B,16.0,36,0.4444
+2,Russia vs Poland B,Piotr Małowiejski,wbcangst,Poland B,12.0,36,0.3333
+2,Russia vs Poland B,Karol Podwyszyński,wbccrosslet,Poland B,5.0,36,0.1389
+2,Hungary A vs Czechia A,Zoltán László,wbczoli,Hungary A,30.5,36,0.8472
+2,Hungary A vs Czechia A,Márk Horváth,wbcmark,Hungary A,15.0,36,0.4167
+2,Hungary A vs Czechia A,Zoltán Sonkoly,wbciron,Hungary A,12.5,36,0.3472
+2,Hungary A vs Czechia A,Adam Horváth,wbca,Czechia A,17.5,36,0.4861
+2,Hungary A vs Czechia A,František Fňukal,wbcd,Czechia A,17.5,36,0.4861
+2,Hungary A vs Czechia A,Petr Žižka,wbcc,Czechia A,15.0,36,0.4167
+2,China vs Team International A,Liu Wenhao,wbcyu20,China,13.0,36,0.3611
+2,China vs Team International A,Liu Xiangbo,wbcuida,China,4.0,36,0.1111
+2,China vs Team International A,Zhang Haoxiang,wbcpangbai,China,12.0,36,0.3333
+2,China vs Team International A,International A  Ashot Avetisyan,wbcashot,Team International A,28.0,36,0.7778
+2,China vs Team International A,Matīss Riherts,wbcmatiss,Team International A,29.0,36,0.8056
+2,China vs Team International A,Szczepan Łukasik,wbckremufka,Team International A,22.0,36,0.6111
+2,Czechia F vs Team International D,Libor Krejčíř,wbcadelstepan,Czechia F,16.0,36,0.4444
+2,Czechia F vs Team International D,Jakub Šalajka,wbcvotocek,Czechia F,18.5,36,0.5139
+2,Czechia F vs Team International D,Vít Jiřík,wbcskoupy,Czechia F,10.0,18,0.5556
+2,Czechia F vs Team International D,International D  Nguyễn Công Minh,wbcnguyenminh,Team International D,19.5,24,0.8125
+2,Czechia F vs Team International D,Li Fuwen,wbcplayer,Team International D,21.0,30,0.7
+2,Czechia F vs Team International D,Wang Siyuan,wbc1211,Team International D,5.0,36,0.1389
+2,Czechia E vs Slovakia,Jan Kopecký,wbcdeafbat,Czechia E,21.0,36,0.5833
+2,Czechia E vs Slovakia,Radim Kostlivý,wbcshpek,Czechia E,18.0,36,0.5
+2,Czechia E vs Slovakia,Jan Purkrábek,wbcpurkys,Czechia E,11.0,36,0.3056
+2,Czechia E vs Slovakia,Igor Eged,wbcg3m,Slovakia,27.0,36,0.75
+2,Czechia E vs Slovakia,Milán Nagy,wbcgenghis,Slovakia,17.0,36,0.4722
+2,Czechia E vs Slovakia,Michal Ferdinandy,wbcmichi,Slovakia,14.0,36,0.3889
+2,Team International B vs Team International C,Anton Efremov,wbcbogimp,Team International B,30.0,36,0.8333
+2,Team International B vs Team International C,Konstantin Solomatin,wbcset,Team International B,29.0,36,0.8056
+2,Team International B vs Team International C,Eva Orlova,wbckakosik,Team International B,11.0,24,0.4583
+2,Team International B vs Team International C,Hajnalka Kovács,wbchajnal,Team International B,11.0,12,0.9167
+2,Team International B vs Team International C,C  Stanislav Hyžík jr.,wbccoldmind,Team International C,14.0,36,0.3889
+2,Team International B vs Team International C,Stanislav Hyžík sr.,wbcgeordie,Team International C,12.0,36,0.3333
+2,Team International B vs Team International C,Richard Červenka,wbcrichi,Team International C,1.0,36,0.0278
+2,Hungary C vs Hungary B,M. Nándor Halena,wbctorpe,Hungary C,1.0,36,0.0278
+2,Hungary C vs Hungary B,Krisztina Kamarás,wbckaktuszka,Hungary C,0.0,36,0.0
+2,Hungary C vs Hungary B,Csaba Kamarás,wbccsaba,Hungary C,0.0,36,0.0
+2,Hungary C vs Hungary B,Róbert Pátkai,wbcnirvana,Hungary B,36.0,36,1.0
+2,Hungary C vs Hungary B,Gábor Nagy,wbcasz,Hungary B,36.0,36,1.0
+2,Hungary C vs Hungary B,Zoltán Menyhárt,wbclasek,Hungary B,24.0,24,1.0
+2,Hungary C vs Hungary B,Ferenc Rostás,wbcrostas,Hungary B,11.0,12,0.9167
+3,Russia vs Team International A,Denis Kachaev,wbcmk108,Russia,16.5,36,0.4583
+3,Russia vs Team International A,Ilya Muratov,wbcfurla,Russia,18.0,36,0.5
+3,Russia vs Team International A,Alexey Lebedev,wbcalleb,Russia,6.0,24,0.25
+3,Russia vs Team International A,Ilya Katsev,wbcbromozel,Russia,6.0,12,0.5
+3,Russia vs Team International A,International A  Matīss Riherts,wbcmatiss,Team International A,24.5,36,0.6806
+3,Russia vs Team International A,Łukasz Majksner,wbcheater,Team International A,19.0,36,0.5278
+3,Russia vs Team International A,Szczepan Łukasik,wbckremufka,Team International A,13.0,24,0.5417
+3,Russia vs Team International A,Ashot Avetisyan,wbcashot,Team International A,5.0,12,0.4167
+3,Czechia C vs Poland B,Alois Mikeš,wbclojzeidon,Czechia C,24.0,36,0.6667
+3,Czechia C vs Poland B,Štěpán Tesařík,wbcperoxid,Czechia C,11.0,36,0.3056
+3,Czechia C vs Poland B,Petr Podolský,wbcdistilfire,Czechia C,13.0,36,0.3611
+3,Czechia C vs Poland B,Paweł Nowak,wbcpeaceman,Poland B,22.0,36,0.6111
+3,Czechia C vs Poland B,Michał Pietrusiak,wbcsiwer,Poland B,21.0,36,0.5833
+3,Czechia C vs Poland B,Piotr Małowiejski,wbcangst,Poland B,17.0,36,0.4722
+3,Czechia D vs Hungary A,Matěj Holub,wbcpiggi,Czechia D,3.0,12,0.25
+3,Czechia D vs Hungary A,Josef Holba,wbcwonderwall,Czechia D,2.0,36,0.0556
+3,Czechia D vs Hungary A,Jakub Fojtík,wbcfojtman,Czechia D,7.5,36,0.2083
+3,Czechia D vs Hungary A,Tomáš Palacký,wbctasemnice,Czechia D,8.0,24,0.3333
+3,Czechia D vs Hungary A,Márk Horváth,wbcmark,Hungary A,9.0,12,0.75
+3,Czechia D vs Hungary A,Ciarán Lucey,wbcciaran,Hungary A,23.0,36,0.6389
+3,Czechia D vs Hungary A,Zoltán Sonkoly,wbciron,Hungary A,31.5,36,0.875
+3,Czechia D vs Hungary A,Zoltán László,wbczoli,Hungary A,24.0,24,1.0
+3,Czechia F vs Slovakia,Vít Jiřík,wbcskoupy,Czechia F,4.0,36,0.1111
+3,Czechia F vs Slovakia,Libor Krejčíř,wbcadelstepan,Czechia F,5.0,36,0.1389
+3,Czechia F vs Slovakia,Jakub Šalajka,wbcvotocek,Czechia F,16.0,36,0.4444
+3,Czechia F vs Slovakia,Milán Nagy,wbcgenghis,Slovakia,25.5,36,0.7083
+3,Czechia F vs Slovakia,Igor Eged,wbcg3m,Slovakia,30.5,36,0.8472
+3,Czechia F vs Slovakia,Michal Ferdinandy,wbcmichi,Slovakia,27.0,36,0.75
+3,Czechia B vs Poland A,Jakub Horák,wbc3ifndef,Czechia B,4.0,36,0.1111
+3,Czechia B vs Poland A,Lukáš Souček,wbciwbtc,Czechia B,8.5,36,0.2361
+3,Czechia B vs Poland A,Martin Muzika,wbcmartez,Czechia B,11.0,36,0.3056
+3,Czechia B vs Poland A,Michał Zajk,wbcpuholek,Poland A,26.0,36,0.7222
+3,Czechia B vs Poland A,Adrian Fitzermann,wbcquantum,Poland A,31.0,36,0.8611
+3,Czechia B vs Poland A,Michał Żukowski,wbcbeetle,Poland A,27.5,36,0.7639
+3,Hungary B vs Team International D,Róbert Pátkai,wbcnirvana,Hungary B,18.0,36,0.5
+3,Hungary B vs Team International D,Gábor Nagy,wbcasz,Hungary B,9.5,24,0.3958
+3,Hungary B vs Team International D,Ferenc Rostás,wbcrostas,Hungary B,24.0,36,0.6667
+3,Hungary B vs Team International D,Zoltán Menyhárt,wbclasek,Hungary B,11.0,12,0.9167
+3,Hungary B vs Team International D,International D  Nguyễn Công Minh,wbcnguyenminh,Team International D,26.0,36,0.7222
+3,Hungary B vs Team International D,Li Fuwen,wbcplayer,Team International D,18.5,36,0.5139
+3,Hungary B vs Team International D,Bai Liu,wbcmulan,Team International D,1.0,36,0.0278
+3,Czechia A vs Team International B,František Fňukal,wbcd,Czechia A,30.0,36,0.8333
+3,Czechia A vs Team International B,Petr Žižka,wbcc,Czechia A,35.0,36,0.9722
+3,Czechia A vs Team International B,Adam Horváth,wbca,Czechia A,28.0,36,0.7778
+3,Czechia A vs Team International B,Anton Efremov,wbcbogimp,Team International B,4.5,36,0.125
+3,Czechia A vs Team International B,Konstantin Solomatin,wbcset,Team International B,8.5,36,0.2361
+3,Czechia A vs Team International B,Eva Orlova,wbckakosik,Team International B,2.0,24,0.0833
+3,Czechia A vs Team International B,Hajnalka Kovács,wbchajnal,Team International B,0.0,12,0.0
+3,Hungary C vs China,M. Nándor Halena,wbctorpe,Hungary C,0.0,36,0.0
+3,Hungary C vs China,Krisztina Kamarás,wbckaktuszka,Hungary C,2.0,36,0.0556
+3,Hungary C vs China,Csaba Kamarás,wbccsaba,Hungary C,1.0,36,0.0278
+3,Hungary C vs China,Liu Wenhao,wbcyu20,China,34.0,36,0.9444
+3,Hungary C vs China,Liu Xiangbo,wbcuida,China,36.0,36,1.0
+3,Hungary C vs China,Zhang Haoxiang,wbcpangbai,China,35.0,36,0.9722
+3,Team International C vs Czechia E,International C  Richard Červenka,wbcrichi,Team International C,4.0,36,0.1111
+3,Team International C vs Czechia E,Stanislav Hyžík jr.,wbccoldmind,Team International C,19.0,36,0.5278
+3,Team International C vs Czechia E,Stanislav Hyžík sr.,wbcgeordie,Team International C,16.0,36,0.4444
+3,Team International C vs Czechia E,Radim Kostlivý,wbcshpek,Czechia E,25.0,36,0.6944
+3,Team International C vs Czechia E,Jan Purkrábek,wbcpurkys,Czechia E,16.0,36,0.4444
+3,Team International C vs Czechia E,Jan Kopecký,wbcdeafbat,Czechia E,28.0,36,0.7778
