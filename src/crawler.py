@@ -61,6 +61,9 @@ class GameResult:
     score_b: float
     total_games: float
     winner: str
+    wins: int = None
+    draws: int = None
+    losses: int = None
 
 @dataclass
 class PlayerMatchSummary:
@@ -109,9 +112,30 @@ def clean_name(raw: str) -> str:
             break
     return name
 
+def parse_playok_html(html):
+    wins, draws, losses = 0, 0, 0
+    for tr_match in re.finditer(r'<tr[^>]*>(.*?)</tr>', html, re.DOTALL | re.IGNORECASE):
+        tr_content = tr_match.group(1)
+        tds = re.findall(r'<td[^>]*>(.*?)</td>', tr_content, re.DOTALL | re.IGNORECASE)
+        if len(tds) >= 3:
+            res = tds[2].strip().lower()
+            res = re.sub(r'<[^>]+>', '', res).strip()
+            if res == 'win': wins += 1
+            elif res == 'loss': losses += 1
+            elif res == 'draw': draws += 1
+    return wins, draws, losses
+
 # ── Main parser ───────────────────────────────────────────
 
-def parse_page(raw_html, t_round, url):
+def parse_page(raw_html, t_round, url, session):
+    playok_links = {}
+    for m in re.finditer(r'href="(https://www\.playok\.com/en/stat\.phtml\?u=([^&"]+)&[^"]*oid=([^&"]+)[^"]*)"', raw_html):
+        p_url = m.group(1).replace('&amp;', '&')
+        player1 = m.group(2).lower()
+        player2 = m.group(3).lower()
+        playok_links[(player1, player2)] = (p_url, player1)
+        playok_links[(player2, player1)] = (p_url, player1)
+
     # 1. Strip HTML tags → plain text, collapse whitespace
     text = re.sub(r'<[^>]+>', ' ', raw_html)
     text = re.sub(r'\s+', ' ', text)
@@ -196,7 +220,7 @@ def parse_page(raw_html, t_round, url):
             ga = float(pm.group(5))
             gb = float(pm.group(6))
 
-            game_results.append(GameResult(
+            game_result = GameResult(
                 tournament_round   = t_round,
                 match_id           = match_id,
                 sub_round          = sr_num,
@@ -212,7 +236,24 @@ def parse_page(raw_html, t_round, url):
                 score_b            = gb,
                 total_games        = ga + gb,
                 winner             = winner(ga, gb),
-            ))
+            )
+            
+            link_info = playok_links.get((pa_nick.lower(), pb_nick.lower()))
+            if link_info:
+                p_url, u_player = link_info
+                try:
+                    p_html = fetch(p_url, session)
+                    w, d, l = parse_playok_html(p_html)
+                    if pa_nick.lower() != u_player:
+                        w, l = l, w
+                    game_result.wins = w
+                    game_result.draws = d
+                    game_result.losses = l
+                    time.sleep(0.5)
+                except Exception as e:
+                    print(f"      ! Failed to fetch playok for {pa_nick} vs {pb_nick}")
+            
+            game_results.append(game_result)
 
     # 5. Parse player summaries after "Final result"
     # FIX v3: require name starts uppercase, no colons/digits in name
@@ -308,7 +349,7 @@ def crawl_all(output_dir="."):
             print(f"  {slug} ...", end=" ", flush=True)
             try:
                 html = fetch(url, session)
-                match, games, sums = parse_page(html, t_round, url)
+                match, games, sums = parse_page(html, t_round, url, session)
                 if match:
                     all_matches.append(match)
                     all_games.extend(games)
@@ -345,7 +386,7 @@ def crawl_all(output_dir="."):
     if not df_g.empty:
         print("\n--- sample game_results ---")
         cols = ['match_id','sub_round','player_a_nick',
-                'score_a','score_b','player_b_nick','winner']
+                'wins','draws','losses','player_b_nick']
         print(df_g[cols].head(9).to_string(index=False))
 
     if not df_s.empty:

@@ -42,6 +42,9 @@ CREATE TABLE IF NOT EXISTS pairings (
     player_b_id   INTEGER NOT NULL REFERENCES players(player_id),
     score_a       REAL    NOT NULL,
     score_b       REAL    NOT NULL,
+    wins_a        INTEGER,          -- game-level wins  for player_a (from PlayOK)
+    draws         INTEGER,          -- game-level draws (shared)
+    losses_a      INTEGER,          -- game-level losses for player_a (from PlayOK)
     UNIQUE(sub_round_id, player_a_id, player_b_id),
     CHECK(player_a_id != player_b_id),
     CHECK(score_a >= 0),
@@ -58,7 +61,10 @@ SELECT
         WHEN p.score_a > p.score_b THEN 'A'
         WHEN p.score_b > p.score_a THEN 'B'
         ELSE 'Draw'
-    END AS winner
+    END AS winner,
+    -- mirror columns for player_b convenience
+    p.losses_a AS wins_b,
+    p.losses_a AS losses_b_mirror
 FROM pairings p;
 
 
@@ -145,4 +151,36 @@ SELECT
     SUM(total_games)  AS total_games,
     ROUND(SUM(total_score) * 1.0 / SUM(total_games), 4) AS efficiency
 FROM v_player_match_summary
+GROUP BY player_nick;
+
+
+-- Game-level W/D/L — uses exact counts crawled from PlayOK
+CREATE VIEW IF NOT EXISTS v_player_wld AS
+SELECT
+    player_nick,
+    player_name,
+    team,
+    SUM(w)   AS wins,
+    SUM(d)   AS draws,
+    SUM(l)   AS losses,
+    SUM(pts)       AS total_score,
+    SUM(pts + opp) AS total_games,
+    ROUND(SUM(pts) * 1.0 / SUM(pts + opp), 4) AS efficiency
+FROM (
+    -- player_a perspective
+    SELECT p.nick AS player_nick, p.full_name AS player_name, t.name AS team,
+           pr.score_a  AS pts,  pr.score_b  AS opp,
+           pr.wins_a   AS w,    pr.draws    AS d,    pr.losses_a AS l
+    FROM pairings pr
+    JOIN players p ON p.player_id = pr.player_a_id
+    JOIN teams t   ON t.team_id   = p.team_id
+    UNION ALL
+    -- player_b perspective (wins/losses are mirrored)
+    SELECT p.nick, p.full_name, t.name,
+           pr.score_b  AS pts,  pr.score_a  AS opp,
+           pr.losses_a AS w,    pr.draws    AS d,    pr.wins_a   AS l
+    FROM pairings pr
+    JOIN players p ON p.player_id = pr.player_b_id
+    JOIN teams t   ON t.team_id   = p.team_id
+) x
 GROUP BY player_nick;

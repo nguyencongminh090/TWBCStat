@@ -189,10 +189,14 @@ def import_data(csv_dir, db_path):
                   f"{row['player_a_nick']}={pa_id}, {row['player_b_nick']}={pb_id}")
             continue
 
+        w = int(row['wins']) if row.get('wins') else None
+        d = int(row['draws']) if row.get('draws') else None
+        l = int(row['losses']) if row.get('losses') else None
+        
         cur.execute(
-            "INSERT INTO pairings (sub_round_id, player_a_id, player_b_id, score_a, score_b) "
-            "VALUES (?, ?, ?, ?, ?)",
-            (sr_id, pa_id, pb_id, float(row['score_a']), float(row['score_b']))
+            "INSERT INTO pairings (sub_round_id, player_a_id, player_b_id, score_a, score_b, wins_a, draws, losses_a) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            (sr_id, pa_id, pb_id, float(row['score_a']), float(row['score_b']), w, d, l)
         )
         pairing_count += 1
 

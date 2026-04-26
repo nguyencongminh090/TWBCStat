@@ -4,19 +4,25 @@ import os, sys
 # Ensure src/ is importable
 sys.path.insert(0, os.path.dirname(__file__))
 
-import phase1_stats
+import phase1_fix
+import phase1_cv
 import phase2_elo
 import phase3_validate
 
 OUT = os.path.join(os.path.dirname(__file__), '..', 'output')
 
 EXPECTED = [
-    "player_career_stats.csv", "team_match_stats.csv", "board_contribution_regression.txt",
-    "elo_ratings_final.csv", "elo_progression.csv", "win_prob_matrix_elo.csv",
-    "bayesian_head_to_head.csv", "composite_index.csv", "validation_round3.csv",
-    "hist_efficiency.png", "scatter_board_contribution.png", "heatmap_corr.png",
-    "heatmap_winprob_elo.png", "plot_elo_progression.png", "scatter_elo_vs_efficiency.png",
-    "scatter_adjusted_efficiency.png", "bar_composite_index.png", "table_validation.png",
+    "player_career_stats.csv", "team_match_stats.csv",
+    "board_contribution_logistic.txt", "board_coef_stability.csv",
+    "loo_predictions.csv", "regularization_grid_search.csv", "final_logistic_model.csv",
+    "elo_ratings_final.csv", "elo_progression.csv",
+    "win_prob_matrix_elo.csv", "bayesian_head_to_head.csv",
+    "composite_index.csv", "validation_round3.csv",
+    "hist_efficiency.png", "heatmap_corr.png", "outlier_sensitivity.png",
+    "roc_curve_loo.png", "regularization_grid_search.png",
+    "heatmap_winprob_elo.png", "plot_elo_progression.png",
+    "scatter_elo_vs_efficiency.png", "scatter_adjusted_efficiency.png",
+    "bar_composite_index.png", "table_validation.png",
 ]
 
 def main():
@@ -25,9 +31,14 @@ def main():
     print("=" * 60)
 
     print("\n" + "─" * 60)
-    print("  PHASE 1 — STATISTICAL ANALYSIS")
+    print("  PHASE 1 — STATISTICAL ANALYSIS (with fixes)")
     print("─" * 60)
-    career, tms, board_df = phase1_stats.run()
+    career, tms, _ = phase1_fix.run()
+
+    print("\n" + "─" * 60)
+    print("  PHASE 1b — CV + REGULARIZATION TUNING")
+    print("─" * 60)
+    phase1_cv.run()
 
     print("\n" + "─" * 60)
     print("  PHASE 2 — PREDICTIVE MODELING")
