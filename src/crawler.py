@@ -1,15 +1,15 @@
 """
-TWBC 2026 - Match Data Crawler  v3
+TWBC 2026 - Match Data Crawler  v4
 =====================================
-Fixes vs v2:
-  - Content extraction: use LAST occurrence of tournament title
-    (nav bar also contains the title → search() was picking up nav, not body)
-  - Player name cleanup: strip team name prefixes bleeding into names
-  - Summary regex: require uppercase start, exclude colons/digits in name
+Fixes vs v3:
+  - Incremental mode (--incremental): only fetches NEW matches not in CSV
+  - Round filter (--round N): only crawl a specific round
 
 Chạy từ máy local:
     pip install requests pandas
-    python src/crawler.py --out data/raw
+    python src/crawler.py --out data/raw                     # full crawl
+    python src/crawler.py --out data/raw --incremental       # only new matches
+    python src/crawler.py --out data/raw --round 4           # only round 4
 """
 
 import re, time, os, argparse
@@ -310,9 +310,47 @@ def parse_page(raw_html, t_round, url, session):
 
 # ── Crawl all ─────────────────────────────────────────────
 
-def crawl_all(output_dir="."):
+def load_existing(output_dir):
+    """Load existing CSVs and return set of already-crawled URLs."""
+    m_path = os.path.join(output_dir, "matches.csv")
+    g_path = os.path.join(output_dir, "game_results.csv")
+    s_path = os.path.join(output_dir, "player_match_summary.csv")
+
+    existing_matches    = []
+    existing_games      = []
+    existing_summaries  = []
+    crawled_urls        = set()
+
+    if os.path.isfile(m_path):
+        df = pd.read_csv(m_path)
+        existing_matches = df.to_dict("records")
+        # Collect previously crawled URLs
+        if "url" in df.columns:
+            crawled_urls = set(df["url"].dropna().str.split("?").str[0])
+        print(f"  Loaded {len(existing_matches)} existing matches from CSV")
+    if os.path.isfile(g_path):
+        df = pd.read_csv(g_path)
+        existing_games = df.to_dict("records")
+        print(f"  Loaded {len(existing_games)} existing game results from CSV")
+    if os.path.isfile(s_path):
+        df = pd.read_csv(s_path)
+        existing_summaries = df.to_dict("records")
+        print(f"  Loaded {len(existing_summaries)} existing player summaries from CSV")
+
+    return existing_matches, existing_games, existing_summaries, crawled_urls
+
+
+def crawl_all(output_dir=".", incremental=False, only_round=None):
     session = requests.Session()
-    
+
+    # ── Load existing data in incremental mode ──
+    ex_matches, ex_games, ex_summaries, crawled_urls = [], [], [], set()
+    if incremental:
+        print("Incremental mode — loading existing data...")
+        ex_matches, ex_games, ex_summaries, crawled_urls = load_existing(output_dir)
+        print(f"  Already crawled: {len(crawled_urls)} match URLs")
+
+    # ── Discover match URLs ──
     print("Discovering match URLs from website...")
     index_url = f"{BASE}/twbc-2026/matches/pairings"
     try:
@@ -320,40 +358,51 @@ def crawl_all(output_dir="."):
     except Exception as e:
         print(f"Failed to fetch index page: {e}")
         return
-        
+
     match_urls = {}
     for m in re.finditer(r'href="([^"]*/twbc-2026/matches/round-(\d+)/([^"?]+))"', html):
-        link = m.group(1).split("?")[0]   # strip query strings like ?authuser=0
+        link = m.group(1).split("?")[0]
         t_round = int(m.group(2))
         slug = m.group(3)
 
         if not slug or "round-" in slug:
+            continue
+        if only_round is not None and t_round != only_round:
             continue
 
         full_url = f"https://sites.google.com{link}" if link.startswith("/") else link
         if t_round not in match_urls:
             match_urls[t_round] = set()
         match_urls[t_round].add(full_url)
-        
-    match_urls = {k: sorted(list(v)) for k, v in match_urls.items()}
-    total_matches = sum(len(v) for v in match_urls.values())
-    print(f"Discovered {total_matches} matches across {len(match_urls)} rounds.")
 
-    all_matches, all_games, all_summaries = [], [], []
+    match_urls = {k: sorted(list(v)) for k, v in match_urls.items()}
+    total_discovered = sum(len(v) for v in match_urls.values())
+    print(f"Discovered {total_discovered} matches across {len(match_urls)} rounds.")
+
+    # ── Filter out already-crawled URLs ──
+    new_matches, new_games, new_summaries = [], [], []
+    skipped = 0
 
     for t_round in sorted(match_urls.keys()):
         urls = match_urls[t_round]
         print(f"\n=== TOURNAMENT ROUND {t_round} ===")
         for url in urls:
-            slug = url.split("/")[-1]
+            clean = url.split("?")[0]
+            slug  = clean.split("/")[-1]
+
+            if incremental and clean in crawled_urls:
+                print(f"  {slug} ... [SKIP — already crawled]")
+                skipped += 1
+                continue
+
             print(f"  {slug} ...", end=" ", flush=True)
             try:
                 html = fetch(url, session)
                 match, games, sums = parse_page(html, t_round, url, session)
                 if match:
-                    all_matches.append(match)
-                    all_games.extend(games)
-                    all_summaries.extend(sums)
+                    new_matches.append(match)
+                    new_games.extend(games)
+                    new_summaries.extend(sums)
                     print(f"✓  {match.score_a:.1f}:{match.score_b:.1f} | "
                           f"{len(games)} pairings | {len(sums)} players")
                 else:
@@ -362,21 +411,40 @@ def crawl_all(output_dir="."):
             except Exception as e:
                 print(f"✗  {e}")
 
-    # ── Save CSVs ─────────────────────────────────────────
-    os.makedirs(output_dir, exist_ok=True)
-    df_m = pd.DataFrame([asdict(x) for x in all_matches])
-    df_g = pd.DataFrame([asdict(x) for x in all_games])
-    df_s = pd.DataFrame([asdict(x) for x in all_summaries])
+    if incremental:
+        print(f"\n  Skipped {skipped} already-crawled matches, fetched {len(new_matches)} new.")
 
+    # ── Merge with existing data ──
+    def rows_from(objs):
+        return [asdict(x) for x in objs]
+
+    all_match_rows   = ex_matches   + rows_from(new_matches)
+    all_game_rows    = ex_games     + rows_from(new_games)
+    all_summary_rows = ex_summaries + rows_from(new_summaries)
+
+    # Deduplicate matches by url (same match may be discovered multiple times)
+    df_m = pd.DataFrame(all_match_rows).drop_duplicates(subset=["url"] if "url" in pd.DataFrame(all_match_rows).columns and len(all_match_rows) > 0 else None)
+    df_g = pd.DataFrame(all_game_rows)
+    df_s = pd.DataFrame(all_summary_rows)
+
+    if df_g.shape[0] > 0:
+        df_g = df_g.drop_duplicates(subset=["match_id","sub_round","player_a_nick","player_b_nick"])
+    if df_s.shape[0] > 0:
+        df_s = df_s.drop_duplicates(subset=["match_id","player_nick"])
+
+    # ── Save CSVs ──
+    os.makedirs(output_dir, exist_ok=True)
     df_m.to_csv(f"{output_dir}/matches.csv",              index=False)
     df_g.to_csv(f"{output_dir}/game_results.csv",         index=False)
     df_s.to_csv(f"{output_dir}/player_match_summary.csv", index=False)
 
-    # ── Report ────────────────────────────────────────────
+    # ── Report ──
     print(f"\n=== DONE ===")
-    print(f"  matches.csv              : {len(df_m):3d} rows  (expected: 27)")
-    print(f"  game_results.csv         : {len(df_g):3d} rows  (expected: ~243)")
-    print(f"  player_match_summary.csv : {len(df_s):3d} rows  (expected: ~160)")
+    print(f"  matches.csv              : {len(df_m):3d} rows")
+    print(f"  game_results.csv         : {len(df_g):3d} rows")
+    print(f"  player_match_summary.csv : {len(df_s):3d} rows")
+    if new_matches:
+        print(f"  New matches added        : {len(new_matches)}")
 
     if not df_m.empty:
         print("\n--- matches ---")
@@ -387,10 +455,11 @@ def crawl_all(output_dir="."):
         print("\n--- sample game_results ---")
         cols = ['match_id','sub_round','player_a_nick',
                 'wins','draws','losses','player_b_nick']
-        print(df_g[cols].head(9).to_string(index=False))
+        avail = [c for c in cols if c in df_g.columns]
+        print(df_g[avail].head(9).to_string(index=False))
 
     if not df_s.empty:
-        print("\n--- top 10 players by efficiency (min 24 games across all matches) ---")
+        print("\n--- top 10 players by efficiency (min 24 games) ---")
         agg = df_s.groupby('player_nick').agg(
             player_name  = ('player_name', 'first'),
             team         = ('team', 'first'),
@@ -404,9 +473,14 @@ def crawl_all(output_dir="."):
 
     return df_m, df_g, df_s
 
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="data/raw",
                     help="Output folder (default: data/raw)")
+    ap.add_argument("--incremental", action="store_true",
+                    help="Only fetch matches not already in the CSV files")
+    ap.add_argument("--round", type=int, default=None, dest="only_round",
+                    help="Only crawl a specific tournament round (e.g. --round 4)")
     args = ap.parse_args()
-    crawl_all(args.out)
+    crawl_all(args.out, incremental=args.incremental, only_round=args.only_round)

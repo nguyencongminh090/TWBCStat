@@ -1,0 +1,27 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           score_margin   R-squared:                       0.991
+Model:                            OLS   Adj. R-squared:                  0.991
+Method:                 Least Squares   F-statistic:                     1795.
+Date:                Mon, 27 Apr 2026   Prob (F-statistic):           2.87e-49
+Time:                        01:29:46   Log-Likelihood:                -163.34
+No. Observations:                  52   AIC:                             334.7
+Df Residuals:                      48   BIC:                             342.5
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept   -104.1227      1.850    -56.270      0.000    -107.843    -100.402
+board1_eff    60.8051      5.150     11.808      0.000      50.451      71.159
+board2_eff    76.3396      7.113     10.732      0.000      62.037      90.642
+board3_eff    71.6574      5.097     14.058      0.000      61.409      81.906
+==============================================================================
+Omnibus:                       19.380   Durbin-Watson:                   2.154
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              140.231
+Skew:                          -0.195   Prob(JB):                     3.54e-31
+Kurtosis:                      11.035   Cond. No.                         14.3
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

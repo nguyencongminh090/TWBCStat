@@ -1,0 +1,67 @@
+nick,full_name,team,elo,career_games,career_eff,is_outlier
+wbcg3m,Igor Eged,Slovakia,1263.6,108.0,0.7454,False
+wbcpuholek,Michał Zajk,Poland A,1260.1,96.0,0.7708,False
+wbczoli,Zoltán László,Hungary A,1259.8,96.0,0.901,False
+wbcbeetle,Michał Żukowski,Poland A,1253.2,84.0,0.8393,False
+wbcnguyenminh,Nguyễn Công Minh,Team International D,1252.4,96.0,0.724,False
+wbcmatiss,Matīss Riherts,Team International A,1246.8,72.0,0.7431,False
+wbcquantum,Adrian Fitzermann,Poland A,1246.7,72.0,0.8889,False
+wbcd,František Fňukal,Czechia A,1246.1,108.0,0.7083,False
+wbcbb,Bogdan Brachaczek,Poland A,1244.6,72.0,0.8333,False
+wbca,Adam Horváth,Czechia A,1244.6,108.0,0.6991,False
+wbcbromozel,Ilya Katsev,Russia,1243.5,48.0,0.75,False
+wbcc,Petr Žižka,Czechia A,1238.3,108.0,0.7037,False
+wbcciaran,Ciarán Lucey,Hungary A,1237.1,72.0,0.6806,False
+wbcfurla,Ilya Muratov,Russia,1234.9,108.0,0.6944,False
+wbcalleb,Alexey Lebedev,Russia,1227.5,96.0,0.6667,False
+wbcmartez,Martin Muzika,Czechia B,1223.9,132.0,0.6742,False
+wbcplayer,Li Fuwen,Team International D,1223.7,108.0,0.5741,False
+wbc3ifndef,Jakub Horák,Czechia B,1223.4,132.0,0.5455,False
+wbciwbtc,Lukáš Souček,Czechia B,1222.7,132.0,0.5985,False
+wbcheater,Łukasz Majksner,Team International A,1219.5,36.0,0.5278,False
+wbciron,Zoltán Sonkoly,Hungary A,1216.1,96.0,0.6771,False
+wbcmk108,Denis Kachaev,Russia,1215.0,72.0,0.5903,False
+wbcyu20,Liu Wenhao,China,1214.0,108.0,0.6019,False
+wbcpeaceman,Paweł Nowak,Poland B,1213.7,36.0,0.6111,False
+wbckremufka,Szczepan Łukasik,Team International A,1213.6,60.0,0.5833,False
+wbclasek,Zoltán Menyhárt,Hungary B,1212.2,60.0,0.6167,False
+wbcashot,Ashot Avetisyan,Team International A,1211.5,48.0,0.6875,False
+wbclojzeidon,Alois Mikeš,Czechia C,1209.0,108.0,0.4769,False
+wbcpangbai,Zhang Haoxiang,China,1205.9,72.0,0.6528,False
+wbcshpek,Radim Kostlivý,Czechia E,1201.5,108.0,0.4167,False
+wbcdeafbat,Jan Kopecký,Czechia E,1200.8,108.0,0.5278,False
+wbchajnal,Hajnalka Kovács,Team International B,1200.4,24.0,0.4583,False
+wbcwonderwall,Josef Holba,Czechia D,1199.7,72.0,0.4861,False
+wbcbogimp,Anton Efremov,Team International B,1199.7,72.0,0.4792,False
+wbcset,Konstantin Solomatin,Team International B,1199.5,72.0,0.5208,False
+wbcmark,Márk Horváth,Hungary A,1199.0,60.0,0.55,False
+wbcrostas,Ferenc Rostás,Hungary B,1193.6,84.0,0.4762,False
+wbcgenghis,Milán Nagy,Slovakia,1193.5,108.0,0.463,False
+wbcsiwer,Michał Pietrusiak,Poland B,1193.5,72.0,0.5139,False
+wbctasemnice,Tomáš Palacký,Czechia D,1192.1,96.0,0.4792,False
+wbcvotocek,Jakub Šalajka,Czechia F,1184.3,72.0,0.4792,False
+wbccoldmind,Stanislav Hyžík jr.,Team International C,1179.6,108.0,0.3611,False
+wbcangst,Piotr Małowiejski,Poland B,1178.4,72.0,0.4028,False
+wbcuida,Liu Xiangbo,China,1178.4,108.0,0.4074,False
+wbcnirvana,Róbert Pátkai,Hungary B,1177.9,132.0,0.5076,False
+wbcmichi,Michal Ferdinandy,Slovakia,1177.6,108.0,0.4259,False
+wbcfojtman,Jakub Fojtík,Czechia D,1171.0,96.0,0.401,False
+wbcasz,Gábor Nagy,Hungary B,1170.5,120.0,0.4958,False
+wbcfuzaty,Michal Holec,Team International C,1170.5,24.0,0.0417,True
+wbcgeordie,Stanislav Hyžík sr.,Team International C,1169.0,84.0,0.3452,False
+wbcdistilfire,Petr Podolský,Czechia C,1168.9,108.0,0.3611,False
+wbcadelstepan,Libor Krejčíř,Czechia F,1168.7,72.0,0.2917,False
+wbccrosslet,Karol Podwyszyński,Poland B,1156.8,36.0,0.1389,False
+wbckakosik,Eva Orlova,Team International B,1155.4,48.0,0.2708,False
+wbcseabow,Jana Adámková,Team International C,1155.2,36.0,0.1111,False
+wbcperoxid,Štěpán Tesařík,Czechia C,1154.8,108.0,0.3981,False
+wbc366,Wang Haoran,China,1154.5,36.0,0.0278,True
+wbc1211,Wang Siyuan,Team International D,1154.5,72.0,0.0972,True
+wbcpiggi,Matěj Holub,Czechia D,1154.2,60.0,0.4,False
+wbcmulan,Bai Liu,Team International D,1154.2,36.0,0.0278,True
+wbcrichi,Richard Červenka,Team International C,1153.0,72.0,0.0694,True
+wbcskoupy,Vít Jiřík,Czechia F,1152.2,60.0,0.2333,False
+wbcpurkys,Jan Purkrábek,Czechia E,1148.2,108.0,0.2685,False
+wbccsaba,Csaba Kamarás,Hungary C,1133.1,108.0,0.037,True
+wbckaktuszka,Krisztina Kamarás,Hungary C,1132.7,108.0,0.037,True
+wbctorpe,M. Nándor Halena,Hungary C,1132.6,108.0,0.0278,True

@@ -1,0 +1,14 @@
+Penalized Logistic Regression (L2, C=1.0)
+==================================================
+Observations: 52
+Target: match_won (binary)
+
+Feature               Coef   Odds Ratio
+----------------------------------------
+board1_eff          1.9060        6.726
+board2_eff          1.7409        5.702
+board3_eff          2.1221        8.349
+Intercept          -2.8782        0.056
+
+McFadden pseudo-R²: 0.6201
+Classification accuracy: 100.0%
