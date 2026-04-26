@@ -169,11 +169,12 @@ def parse_page(raw_html, t_round, url):
         re.DOTALL
     )
     # Pairing: anchor tags stripped leave spaces around nicks → \(\s*nick\s*\)
+    # Name group excludes '(' and ')' to prevent capturing across pairing boundaries
     PAIR_RE = re.compile(
-        r'([^(]{2,40}?)'
+        r'([^()]{2,40}?)'
         r'\(\s*(\w+)\s*\)'
         r'\s+vs\s+'
-        r'([^(]{2,40}?)'
+        r'([^()]{2,40}?)'
         r'\(\s*(\w+)\s*\)'
         r'\s+([\d.]+):([\d.]+)'
     )
