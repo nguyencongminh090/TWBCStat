@@ -9,7 +9,7 @@ Fixes vs v2:
 
 Chạy từ máy local:
     pip install requests pandas
-    python twbc2026_crawler.py --out twbc_data
+    python src/crawler.py --out data/raw
 """
 
 import re, time, os, argparse
@@ -364,7 +364,7 @@ def crawl_all(output_dir="."):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="twbc_data",
-                    help="Output folder (default: twbc_data)")
+    ap.add_argument("--out", default="data/raw",
+                    help="Output folder (default: data/raw)")
     args = ap.parse_args()
     crawl_all(args.out)
