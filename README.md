@@ -1,6 +1,6 @@
 # TWBCStat — Team World Blitz Championship 2026 Statistics
 
-Data pipeline and analysis toolkit for the [TWBC 2026](https://sites.google.com/view/worldblitzcup/twbc-2026) tournament.
+Data pipeline and analysis toolkit for the [TWBC 2026](https://sites.google.com/view/worldblitzcup) tournament.
 
 ## Project Structure
 
