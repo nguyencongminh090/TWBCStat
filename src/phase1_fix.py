@@ -23,9 +23,8 @@ import seaborn as sns
 from scipy import stats as scipy_stats
 
 np.random.seed(42)
-DB = os.path.join(os.path.dirname(__file__), '..', 'data', 'processed', 'twbc.db')
-OUT = os.path.join(os.path.dirname(__file__), '..', 'output')
-os.makedirs(OUT, exist_ok=True)
+from paths import DB, OUT, data, plot_m, report, ensure_dirs
+ensure_dirs()
 plt.style.use("seaborn-v0_8-whitegrid")
 DPI = 150
 
@@ -72,7 +71,7 @@ def run():
     var_stats.columns = ['player_nick','eff_std','eff_min','eff_max']
     var_stats['eff_range'] = var_stats['eff_max'] - var_stats['eff_min']
     career = career.merge(var_stats, on='player_nick', how='left')
-    career.to_csv(f"{OUT}/player_career_stats.csv", index=False)
+    career.to_csv(data("player_career_stats.csv"), index=False)
     print(f"  Saved {len(career)} rows → player_career_stats.csv")
 
     # ── Step 0.2 — Team match stats ──
@@ -89,7 +88,7 @@ def run():
         GROUP BY pms.tournament_round, pms.match_id, pms.team
     """, con)
     tms['score_margin'] = tms['team_pts'] - tms['opp_pts']
-    tms.to_csv(f"{OUT}/team_match_stats.csv", index=False)
+    tms.to_csv(data("team_match_stats.csv"), index=False)
     print(f"  Saved {len(tms)} rows → team_match_stats.csv")
 
     # ── Step 0.3 — Correlations ──
@@ -120,13 +119,13 @@ def run():
     ax.hist(career['career_efficiency'], bins=20, edgecolor='black', alpha=0.7, color='#4C72B0')
     ax.set_xlabel('Career Efficiency'); ax.set_ylabel('Count')
     ax.set_title('Distribution of Player Career Efficiency')
-    plt.tight_layout(); fig.savefig(f"{OUT}/hist_efficiency.png", dpi=DPI); plt.close()
+    plt.tight_layout(); fig.savefig(plot_m("hist_efficiency.png"), dpi=DPI); plt.close()
 
     num_cols = career.select_dtypes(include=[np.number]).columns
     fig, ax = plt.subplots(figsize=(8, 6))
     sns.heatmap(career[num_cols].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0, ax=ax)
     ax.set_title('Correlation Heatmap — Player Features')
-    plt.tight_layout(); fig.savefig(f"{OUT}/heatmap_corr.png", dpi=DPI); plt.close()
+    plt.tight_layout(); fig.savefig(plot_m("heatmap_corr.png"), dpi=DPI); plt.close()
     print("  Saved: hist_efficiency.png, heatmap_corr.png")
 
     # ══════════════════════════════════════════════════════
@@ -212,7 +211,7 @@ def run():
     summary_text = "\n".join(summary_lines)
 
     print(summary_text)
-    with open(f"{OUT}/board_contribution_logistic.txt", "w") as f:
+    with open(report("board_contribution_logistic.txt"), "w") as f:
         f.write(summary_text)
     print("  Saved: output/board_contribution_logistic.txt")
 
@@ -285,7 +284,7 @@ def run():
     |pct_change| > 30%  → DRIVEN BY OUTLIERS — use clean model
     """)
 
-    comparison.to_csv(f"{OUT}/board_coef_stability.csv")
+    comparison.to_csv(data("board_coef_stability.csv"))
     print("  Saved: output/board_coef_stability.csv")
 
     # ── Step 2.3 — Visualize outlier impact ──
@@ -321,7 +320,7 @@ def run():
     ax2.legend(fontsize=9)
 
     plt.tight_layout()
-    fig.savefig(f"{OUT}/outlier_sensitivity.png", dpi=DPI); plt.close()
+    fig.savefig(plot_m("outlier_sensitivity.png"), dpi=DPI); plt.close()
     print("  Saved: output/outlier_sensitivity.png")
 
     # ══════════════════════════════════════════════════════

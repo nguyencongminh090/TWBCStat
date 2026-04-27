@@ -1,0 +1,10 @@
+match_id,team_a,team_b,bt_pred,actual,bt_ok,bt_score_a,bt_score_b
+19,Czechia A,Team International B,A,A,True,71.08,36.92
+20,Czechia B,Poland A,B,B,True,3.11,104.89
+21,Czechia C,Poland B,A,B,False,95.55,12.45
+22,Czechia D,Hungary A,B,B,True,14.82,93.18
+23,Czechia F,Slovakia,B,B,True,36.61,71.39
+24,Hungary B,Team International D,B,A,False,36.54,71.46
+25,Hungary C,China,B,B,True,18.0,90.0
+26,Russia,Team International A,A,B,False,58.86,49.14
+27,Team International C,Czechia E,B,B,True,18.33,89.67

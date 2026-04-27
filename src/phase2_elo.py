@@ -26,9 +26,11 @@ from collections import defaultdict
 
 np.random.seed(42)
 
-DB  = os.path.join(os.path.dirname(__file__), "..", "data", "processed", "twbc.db")
-OUT = os.path.join(os.path.dirname(__file__), "..", "output")
-os.makedirs(OUT, exist_ok=True)
+from paths import DB, OUT, DATA_DIR as _D, RATINGS_DIR, MODEL_DIR, ensure_dirs
+from paths import data, plot_r, plot_m
+
+np.random.seed(42)
+ensure_dirs()
 plt.style.use("seaborn-v0_8-whitegrid")
 DPI = 150
 

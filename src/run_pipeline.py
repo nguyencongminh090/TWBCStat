@@ -9,20 +9,33 @@ import phase1_cv
 import phase2_elo
 import phase3_validate
 
-OUT = os.path.join(os.path.dirname(__file__), '..', 'output')
+from paths import OUT, DATA_DIR, RATINGS_DIR, MODEL_DIR, data, plot_m, plot_r, report, ensure_dirs
+ensure_dirs()
 
 EXPECTED = [
-    "player_career_stats.csv", "team_match_stats.csv",
-    "board_contribution_logistic.txt", "board_coef_stability.csv",
-    "loo_predictions.csv", "regularization_grid_search.csv", "final_logistic_model.csv",
-    "elo_ratings_final.csv", "elo_progression.csv",
-    "win_prob_matrix_elo.csv", "bayesian_head_to_head.csv",
-    "composite_index.csv", "validation_round3.csv",
-    "hist_efficiency.png", "heatmap_corr.png", "outlier_sensitivity.png",
-    "roc_curve_loo.png", "regularization_grid_search.png",
-    "heatmap_winprob_elo.png", "plot_elo_progression.png",
-    "scatter_elo_vs_efficiency.png", "scatter_adjusted_efficiency.png",
-    "bar_composite_index.png", "table_validation.png",
+    # data/
+    ("data", "player_career_stats.csv"),
+    ("data", "team_match_stats.csv"),
+    ("data", "elo_ratings_final.csv"), ("data", "elo_progression.csv"),
+    ("data", "win_prob_matrix_elo.csv"), ("data", "bayesian_head_to_head.csv"),
+    ("data", "composite_index.csv"), ("data", "validation_round3.csv"),
+    ("data", "loo_predictions.csv"), ("data", "regularization_grid_search.csv"),
+    ("data", "final_logistic_model.csv"), ("data", "board_coef_stability.csv"),
+    # reports/
+    ("reports", "board_contribution_logistic.txt"),
+    # plots/model/
+    ("plots/model", "hist_efficiency.png"), ("plots/model", "heatmap_corr.png"),
+    ("plots/model", "outlier_sensitivity.png"), ("plots/model", "roc_curve_loo.png"),
+    ("plots/model", "regularization_grid_search.png"),
+    ("plots/model", "scatter_elo_vs_efficiency.png"),
+    ("plots/model", "scatter_adjusted_efficiency.png"),
+    ("plots/model", "bar_composite_index.png"), ("plots/model", "table_validation.png"),
+    # plots/ratings/
+    ("plots/ratings", "heatmap_winprob_elo.png"),
+    ("plots/ratings", "plot_elo_progression.png"),
+    ("plots/ratings", "plot_trueskill_ratings.png"),
+    ("plots/ratings", "plot_bt_vs_elo.png"),
+    ("plots/ratings", "plot_ensemble_validation.png"),
 ]
 
 def main():
@@ -54,10 +67,10 @@ def main():
     print("\n" + "=" * 60)
     print("  OUTPUT CHECKLIST")
     print("=" * 60)
-    for f in EXPECTED:
-        exists = os.path.isfile(os.path.join(OUT, f))
+    for subdir, f in EXPECTED:
+        exists = os.path.isfile(os.path.join(OUT, subdir, f))
         mark = "✓" if exists else "✗"
-        print(f"  [{mark}] output/{f}")
+        print(f"  [{mark}] output/{subdir}/{f}")
 
     # ── Executive Summary ──
     print("\n" + "=" * 60)
@@ -66,7 +79,7 @@ def main():
 
     # 1. Board contribution
     try:
-        with open(f"{OUT}/board_contribution_regression.txt") as f:
+        with open(report("board_contribution_regression.txt")) as f:
             reg_text = f.read()
         print(f"""
 1. BOARD CONTRIBUTION: The OLS regression reveals which board positions

@@ -10,9 +10,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 np.random.seed(42)
-DB = os.path.join(os.path.dirname(__file__), '..', 'data', 'processed', 'twbc.db')
-OUT = os.path.join(os.path.dirname(__file__), '..', 'output')
-os.makedirs(OUT, exist_ok=True)
+from paths import DB, OUT, data, plot_m, report, ensure_dirs
+ensure_dirs()
 plt.style.use("seaborn-v0_8-whitegrid")
 FIGSIZE = (10, 6)
 DPI = 150
@@ -28,7 +27,7 @@ def run():
     var_stats.columns = ['player_nick','eff_std','eff_min','eff_max']
     var_stats['eff_range'] = var_stats['eff_max'] - var_stats['eff_min']
     career = career.merge(var_stats, on='player_nick', how='left')
-    career.to_csv(f"{OUT}/player_career_stats.csv", index=False)
+    career.to_csv(data("player_career_stats.csv"), index=False)
     print(f"  Saved {len(career)} rows")
 
     # ── 1.2 Team match efficiency ──
@@ -44,7 +43,7 @@ def run():
         GROUP BY pms.tournament_round, pms.match_id, pms.team
     """, conn)
     tms['score_margin'] = tms['team_pts'] - tms['opp_pts']
-    tms.to_csv(f"{OUT}/team_match_stats.csv", index=False)
+    tms.to_csv(data("team_match_stats.csv"), index=False)
     print(f"  Saved {len(tms)} rows")
 
     # ── 1.3 Correlation ──
@@ -75,7 +74,7 @@ def run():
 
     if len(board_df) > 5:
         model = smf.ols("score_margin ~ board1_eff + board2_eff + board3_eff", data=board_df).fit()
-        with open(f"{OUT}/board_contribution_regression.txt", "w") as f:
+        with open(report("board_contribution_regression.txt"), "w") as f:
             f.write(str(model.summary()))
         print(model.summary())
 
@@ -100,7 +99,7 @@ def run():
     fig, ax = plt.subplots(figsize=FIGSIZE)
     ax.hist(career['career_efficiency'], bins=20, edgecolor='black', alpha=0.7, color='#4C72B0')
     ax.set_xlabel('Career Efficiency'); ax.set_ylabel('Count'); ax.set_title('Distribution of Player Career Efficiency')
-    plt.tight_layout(); fig.savefig(f"{OUT}/hist_efficiency.png", dpi=DPI); plt.close()
+    plt.tight_layout(); fig.savefig(plot_m("hist_efficiency.png"), dpi=DPI); plt.close()
 
     if len(board_df) > 0:
         fig, ax = plt.subplots(figsize=FIGSIZE)
@@ -108,13 +107,13 @@ def run():
             col = f'board{b}_eff'
             ax.scatter(board_df[col], board_df['score_margin'], label=f'Board {b}', alpha=0.7, color=c, s=60)
         ax.set_xlabel('Board Efficiency'); ax.set_ylabel('Score Margin'); ax.set_title('Board Efficiency vs Score Margin')
-        ax.legend(); plt.tight_layout(); fig.savefig(f"{OUT}/scatter_board_contribution.png", dpi=DPI); plt.close()
+        ax.legend(); plt.tight_layout(); fig.savefig(plot_m("scatter_board_contribution.png"), dpi=DPI); plt.close()
 
     num_cols = career.select_dtypes(include=[np.number]).columns
     fig, ax = plt.subplots(figsize=(8,6))
     sns.heatmap(career[num_cols].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0, ax=ax)
     ax.set_title('Correlation Heatmap — Player Features')
-    plt.tight_layout(); fig.savefig(f"{OUT}/heatmap_corr.png", dpi=DPI); plt.close()
+    plt.tight_layout(); fig.savefig(plot_m("heatmap_corr.png"), dpi=DPI); plt.close()
     print("  ✓ All Phase 1 plots saved")
 
     conn.close()

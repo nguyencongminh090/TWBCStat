@@ -18,13 +18,11 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from scipy.stats import beta as beta_dist
+from scipy.optimize import linear_sum_assignment
+from paths import DB, data, TRENDS_DIR, ensure_dirs
 
 np.random.seed(42)
-
-BASE = os.path.join(os.path.dirname(__file__), "..")
-OUT  = os.path.join(BASE, "output")
-TRENDS_DIR = os.path.join(OUT, "trends")
-os.makedirs(TRENDS_DIR, exist_ok=True)
+ensure_dirs()
 plt.style.use("seaborn-v0_8-whitegrid")
 DPI = 150
 
@@ -34,10 +32,10 @@ DPI = 150
 # ─────────────────────────────────────────────────────────────
 
 def _load():
-    elo_df = pd.read_csv(f"{OUT}/elo_ratings_final.csv")
+    elo_df = pd.read_csv(data("elo_ratings_final.csv"))
     elo = dict(zip(elo_df.nick, elo_df.elo))
 
-    bayes = pd.read_csv(f"{OUT}/bayesian_head_to_head.csv")
+    bayes = pd.read_csv(data("bayesian_head_to_head.csv"))
     print(f"Loaded Elo ratings for {len(elo)} players")
     print(f"Loaded Bayesian h2h: {len(bayes)} matchups")
     return elo, bayes
@@ -89,7 +87,7 @@ def _build_win_trends(elo, bayes):
     win_trends = pd.DataFrame(records).sort_values(
         ["player", "p_bayes"], ascending=[True, False]
     )
-    win_trends.to_csv(f"{OUT}/win_trends_per_player.csv", index=False)
+    win_trends.to_csv(data("win_trends_per_player.csv"), index=False)
     print(f"Saved {len(win_trends)} rows to output/win_trends_per_player.csv")
     return win_trends
 
@@ -174,7 +172,7 @@ def _divergence_table(win_trends):
     print(f"\n=== Top 20 biggest Elo vs Bayesian divergences (min {min_games} game(s)) ===")
     print(divergence[["player","opponent","games","p_elo","p_bayes",
                        "signal","uncertainty"]].to_string(index=False))
-    divergence.to_csv(f"{OUT}/top_divergences.csv", index=False)
+    divergence.to_csv(data("top_divergences.csv"), index=False)
     print(f"Saved: output/top_divergences.csv")
 
     print("""
@@ -239,6 +237,96 @@ def predict_lineup(lineup_a: list, lineup_b: list, elo_dict: dict,
 
 
 # ─────────────────────────────────────────────────────────────
+# Step 6 — Optimal lineup (Hungarian algorithm)
+# ─────────────────────────────────────────────────────────────
+
+def optimal_lineup(team_a: list, team_b: list, elo_dict: dict,
+                   n_games: int = 12, team_a_name: str = "Team A",
+                   team_b_name: str = "Team B") -> pd.DataFrame:
+    """
+    Find the optimal board assignment for Team A using the
+    Hungarian algorithm (linear_sum_assignment).
+
+    Solves:  maximize  Σ_i  P(team_a[i] beats team_b[σ(i)])
+    over all permutations σ of team_b players.
+
+    Also finds the WORST-case assignment (what Team B wants).
+
+    Parameters
+    ----------
+    team_a, team_b : lists of player nicks (available roster, not yet assigned)
+    elo_dict       : nick → Elo rating
+    n_games        : games per board
+
+    Returns
+    -------
+    DataFrame comparing: given order, best-for-A, worst-for-A
+    """
+    na, nb = len(team_a), len(team_b)
+    n = min(na, nb)
+
+    # Build cost matrix: -p because linear_sum_assignment MINIMIZES
+    cost = np.zeros((n, n))
+    for i in range(n):
+        for j in range(n):
+            ea = elo_dict.get(team_a[i], 1200)
+            eb = elo_dict.get(team_b[j], 1200)
+            cost[i, j] = -(1 / (1 + 10 ** ((eb - ea) / 400)))
+
+    # Best assignment for Team A (maximize total p)
+    row_best, col_best = linear_sum_assignment(cost)
+    best_pairs = [(team_a[r], team_b[c]) for r, c in zip(row_best, col_best)]
+    best_total_p = -cost[row_best, col_best].sum()
+
+    # Worst assignment for Team A (minimize total p)
+    row_worst, col_worst = linear_sum_assignment(-cost)
+    worst_pairs = [(team_a[r], team_b[c]) for r, c in zip(row_worst, col_worst)]
+    worst_total_p = -cost[row_worst, col_worst].sum()  # = sum of p values
+
+    # Default assignment (as given)
+    default_p = sum(
+        1 / (1 + 10 ** ((elo_dict.get(team_b[i], 1200) -
+                         elo_dict.get(team_a[i], 1200)) / 400))
+        for i in range(n)
+    )
+
+    # Print comparison
+    print(f"\n  Optimal Lineup Analysis: {team_a_name} vs {team_b_name}")
+    print(f"  {'─'*65}")
+
+    def _print_assignment(label, pairs, total_p):
+        print(f"\n  {label} (total P = {total_p:.4f}, E[score_A] = {total_p*n_games:.1f}):")
+        for i, (a, b) in enumerate(pairs):
+            ea = elo_dict.get(a, 1200)
+            eb = elo_dict.get(b, 1200)
+            p = 1 / (1 + 10 ** ((eb - ea) / 400))
+            print(f"    Board {i+1}: {a:<16} vs {b:<16} P(A)={p:.3f}  E[A]={p*n_games:.1f}")
+
+    _print_assignment("Given order",
+                      list(zip(team_a[:n], team_b[:n])), default_p)
+    _print_assignment(f"Best for {team_a_name} (Hungarian)",
+                      best_pairs, best_total_p)
+    _print_assignment(f"Worst for {team_a_name}",
+                      worst_pairs, worst_total_p)
+
+    swing = (best_total_p - worst_total_p) * n_games
+    print(f"\n  Swing range: {swing:.1f} expected points between best and worst assignment")
+    print(f"  Improvement over given: {(best_total_p - default_p)*n_games:+.1f} points")
+
+    # Build output DataFrame
+    rows = []
+    for i, (a, b) in enumerate(best_pairs):
+        ea = elo_dict.get(a, 1200)
+        eb = elo_dict.get(b, 1200)
+        p = 1 / (1 + 10 ** ((eb - ea) / 400))
+        rows.append({"board": i+1, "player_a": a, "player_b": b,
+                     "p_a_wins": round(p, 4),
+                     "expected_a": round(p * n_games, 2),
+                     "assignment": "optimal"})
+    return pd.DataFrame(rows)
+
+
+# ─────────────────────────────────────────────────────────────
 # Main
 # ─────────────────────────────────────────────────────────────
 
@@ -272,6 +360,16 @@ def run():
         lineup_a=["wbcbeetle", "wbcbb", "wbcpuholek"],
         lineup_b=["wbcd",      "wbca",  "wbcc"],
         elo_dict=elo,
+    )
+
+    print("\n" + "─" * 55)
+    print("  Step 6 — Optimal lineup (Hungarian algorithm)")
+    print("─" * 55)
+    optimal_lineup(
+        team_a=["wbcbeetle", "wbcbb", "wbcpuholek"],
+        team_b=["wbcd",      "wbca",  "wbcc"],
+        elo_dict=elo,
+        team_a_name="Poland A", team_b_name="Czechia A",
     )
 
     # Output checklist

@@ -23,10 +23,8 @@ from sklearn.metrics import accuracy_score, log_loss, confusion_matrix, roc_curv
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 np.random.seed(42)
-plt.style.use("seaborn-v0_8-whitegrid")
-DB  = os.path.join(os.path.dirname(__file__), '..', 'data', 'processed', 'twbc.db')
-OUT = os.path.join(os.path.dirname(__file__), '..', 'output')
-os.makedirs(OUT, exist_ok=True)
+from paths import DB, OUT, data, plot_m, ensure_dirs
+ensure_dirs()
 DPI = 150
 
 FEATURES = ["board1_eff", "board2_eff", "board3_eff"]

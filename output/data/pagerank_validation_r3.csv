@@ -1,0 +1,10 @@
+match_id,team_a,team_b,pr_pred,actual,pr_ok,pr_score_a,pr_score_b
+19,Czechia A,Team International B,B,A,False,54.0,54.0
+20,Czechia B,Poland A,A,B,False,54.0,54.0
+21,Czechia C,Poland B,B,B,True,54.0,54.0
+22,Czechia D,Hungary A,A,B,False,54.0,54.0
+23,Czechia F,Slovakia,B,B,True,54.0,54.0
+24,Hungary B,Team International D,B,A,False,54.0,54.0
+25,Hungary C,China,A,B,False,54.0,54.0
+26,Russia,Team International A,A,B,False,54.0,54.0
+27,Team International C,Czechia E,B,B,True,54.0,54.0

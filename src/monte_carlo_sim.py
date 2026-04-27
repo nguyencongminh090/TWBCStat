@@ -26,20 +26,17 @@ Prerequisites:
 import sqlite3, os, sys
 import pandas as pd
 import numpy as np
+from scipy.stats import norm, binom
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import seaborn as sns
 from collections import defaultdict
+from paths import DB, data, MC_DIR, ensure_dirs
 
 np.random.seed(42)
-
-BASE = os.path.join(os.path.dirname(__file__), "..")
-DB   = os.path.join(BASE, "data", "processed", "twbc.db")
-OUT  = os.path.join(BASE, "output")
-MC_DIR = os.path.join(OUT, "monte_carlo")
-os.makedirs(MC_DIR, exist_ok=True)
+ensure_dirs()
 plt.style.use("seaborn-v0_8-whitegrid")
 DPI = 150
 
@@ -113,6 +110,114 @@ def simulate_match(lineup_a: list, lineup_b: list,
         "p_team_a":   a_wins,
         "p_team_b":   b_wins,
         "p_draw":     draws,
+        "mean_margin": (total_a - total_b).mean(),
+        "std_margin":  (total_a - total_b).std(),
+    }
+
+
+# ═══════════════════════════════════════════════════════════════
+# ENHANCED ENGINE: Beta-Binomial + Gaussian Copula
+# ═══════════════════════════════════════════════════════════════
+
+def simulate_board_betabinom(p_a: float, n_games: int, n_sims: int,
+                              confidence: float = 8.0) -> np.ndarray:
+    """
+    Beta-Binomial board simulation: adds uncertainty to win probability.
+
+    Instead of treating p_a as exact, we model it as:
+        p ~ Beta(α, β)    where α = p_a * confidence, β = (1-p_a) * confidence
+        score ~ Binomial(n_games, p)
+
+    This produces FATTER TAILS than plain Binomial — upsets are more
+    likely, matching real-world variance better.
+
+    Parameters
+    ----------
+    p_a        : point estimate of win probability
+    n_games    : games per board
+    n_sims     : simulation count
+    confidence : pseudo-observation count (lower → more uncertainty)
+                 Guideline: 4-6 for pairs with 1 meeting, 10-15 for 3+ meetings
+    """
+    alpha = max(p_a * confidence, 0.01)      # avoid degenerate Beta
+    beta  = max((1 - p_a) * confidence, 0.01)
+    p_samples = np.random.beta(alpha, beta, size=n_sims)
+    return np.random.binomial(n_games, p_samples)
+
+
+def simulate_match_copula(lineup_a: list, lineup_b: list,
+                          elo_dict: dict, n_games: int = GAMES_PER_BOARD,
+                          n_sims: int = N_SIMS, rho: float = 0.15,
+                          use_betabinom: bool = True,
+                          confidence: float = 8.0) -> dict:
+    """
+    Enhanced match simulation with correlated boards (Gaussian Copula)
+    and optional Beta-Binomial overdispersion.
+
+    Gaussian Copula preserves each board's marginal distribution while
+    introducing inter-board correlation ρ. This models team-level
+    effects (morale, pressure) that make board outcomes non-independent.
+
+    Parameters
+    ----------
+    rho            : inter-board correlation (0 = independent, like original)
+    use_betabinom  : if True, use Beta-Binomial instead of Binomial
+    confidence     : Beta-Binomial pseudo-observation count
+    """
+    n_boards = len(lineup_a)
+    p_boards = []
+    for a, b in zip(lineup_a, lineup_b):
+        p_boards.append(elo_win_prob(elo_dict.get(a, 1200), elo_dict.get(b, 1200)))
+
+    # Step 1: Generate correlated uniform variables via Gaussian Copula
+    cov = np.full((n_boards, n_boards), rho)
+    np.fill_diagonal(cov, 1.0)
+    Z = np.random.multivariate_normal(np.zeros(n_boards), cov, size=n_sims)
+    U = norm.cdf(Z)       # uniform marginals, correlated
+    U = np.clip(U, 1e-6, 1 - 1e-6)  # avoid edge issues with ppf
+
+    # Step 2: Transform to board scores
+    board_results = []
+    total_a = np.zeros(n_sims)
+    total_b = np.zeros(n_sims)
+
+    for i in range(n_boards):
+        p_a = p_boards[i]
+        if use_betabinom:
+            # Beta-Binomial: sample p from Beta, then use copula-U for correlation
+            alpha = max(p_a * confidence, 0.01)
+            beta_ = max((1 - p_a) * confidence, 0.01)
+            from scipy.stats import betabinom as betabinom_dist
+            scores_a = betabinom_dist.ppf(U[:, i], n_games, alpha, beta_).astype(int)
+        else:
+            scores_a = binom.ppf(U[:, i], n_games, p_a).astype(int)
+
+        scores_b = n_games - scores_a
+        total_a += scores_a
+        total_b += scores_b
+
+        board_results.append({
+            "board":    i + 1,
+            "player_a": lineup_a[i],
+            "player_b": lineup_b[i],
+            "p_a":      p_a,
+            "mean_a":   scores_a.mean(),
+            "mean_b":   scores_b.mean(),
+            "std_a":    scores_a.std(),
+            "scores_a": scores_a,
+        })
+
+    a_wins = (total_a > total_b).sum() / n_sims
+    b_wins = (total_b > total_a).sum() / n_sims
+    draws  = (total_a == total_b).sum() / n_sims
+
+    return {
+        "boards":      board_results,
+        "total_a":     total_a,
+        "total_b":     total_b,
+        "p_team_a":    a_wins,
+        "p_team_b":    b_wins,
+        "p_draw":      draws,
         "mean_margin": (total_a - total_b).mean(),
         "std_margin":  (total_a - total_b).std(),
     }
@@ -465,7 +570,7 @@ def run():
     print("=" * 60)
 
     # Load Elo
-    elo_df = pd.read_csv(f"{OUT}/elo_ratings_final.csv")
+    elo_df = pd.read_csv(data("elo_ratings_final.csv"))
     elo = dict(zip(elo_df.nick, elo_df.elo))
     print(f"Loaded Elo for {len(elo)} players")
 
@@ -562,8 +667,80 @@ def run():
         mark = "✓" if exists else "✗"
         print(f"  [{mark}] output/{f}")
 
+    # ── Step 6: Compare Binomial vs Beta-Binomial+Copula ──
+    print("\n" + "═" * 60)
+    print("  STEP 6 — Binomial vs Beta-Binomial+Copula Comparison")
+    print("═" * 60)
+    _compare_engines(
+        ["wbcbeetle", "wbcbb", "wbcpuholek"],
+        ["wbcd",      "wbca",  "wbcc"],
+        elo, "Poland A", "Czechia A"
+    )
+
     conn.close()
     print("\n  Done.")
+
+
+def _compare_engines(lineup_a, lineup_b, elo_dict, name_a, name_b):
+    """Side-by-side comparison of original vs enhanced MC engines."""
+    original = simulate_match(lineup_a, lineup_b, elo_dict)
+    enhanced = simulate_match_copula(lineup_a, lineup_b, elo_dict,
+                                     rho=0.15, use_betabinom=True,
+                                     confidence=8.0)
+
+    print(f"\n  {name_a} vs {name_b}  ({N_SIMS:,} sims each)")
+    print(f"\n  {'Metric':<28} {'Binomial':>12} {'BB+Copula':>12} {'Delta':>8}")
+    print(f"  {'─'*62}")
+
+    metrics = [
+        ("P(Team A wins)",   original["p_team_a"],   enhanced["p_team_a"]),
+        ("P(Team B wins)",   original["p_team_b"],   enhanced["p_team_b"]),
+        ("P(Draw)",          original["p_draw"],     enhanced["p_draw"]),
+        ("Mean margin",      original["mean_margin"], enhanced["mean_margin"]),
+        ("Margin σ (spread)", original["std_margin"], enhanced["std_margin"]),
+    ]
+    for label, v_orig, v_enh in metrics:
+        delta = v_enh - v_orig
+        print(f"  {label:<28} {v_orig:>12.4f} {v_enh:>12.4f} {delta:>+8.4f}")
+
+    # Board-level comparison
+    print(f"\n  Board-level std comparison:")
+    for bo, be in zip(original["boards"], enhanced["boards"]):
+        print(f"    Board {bo['board']}: {bo['player_a']:<16} "
+              f"σ_orig={bo['std_a']:.3f}  σ_enh={be['std_a']:.3f}  "
+              f"Δ={be['std_a']-bo['std_a']:+.3f}")
+
+    # Save comparison plot
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+    margin_orig = original["total_a"] - original["total_b"]
+    margin_enh  = enhanced["total_a"] - enhanced["total_b"]
+
+    for ax, margin, title, color in [
+        (axes[0], margin_orig, f"Original (Binomial, independent)", "#5B8DBE"),
+        (axes[1], margin_enh,  f"Enhanced (Beta-Binomial + Copula ρ=0.15)", "#E07B39"),
+    ]:
+        lo = min(margin_orig.min(), margin_enh.min())
+        hi = max(margin_orig.max(), margin_enh.max())
+        bins = np.arange(lo - 0.5, hi + 1.5, 1)
+        ax.hist(margin, bins=bins, density=True, alpha=0.8,
+                color=color, edgecolor="white")
+        ax.axvline(0, color="black", lw=1.5, ls="--", alpha=0.7)
+        ax.axvline(margin.mean(), color="darkred", lw=2,
+                   label=f"Mean: {margin.mean():+.1f}")
+        ax.set_xlabel("Score Margin (A − B)")
+        ax.set_ylabel("Density")
+        ax.set_title(f"{name_a} vs {name_b}\n{title}", fontsize=10)
+        ax.legend(fontsize=9)
+        ax.text(0.02, 0.92, f"P(A)={original['p_team_a'] if 'Orig' in title else enhanced['p_team_a']:.1%}\n"
+                             f"σ={margin.std():.1f}",
+                transform=ax.transAxes, fontsize=9, va="top",
+                bbox=dict(boxstyle="round,pad=0.3", fc="white", alpha=0.8))
+
+    plt.tight_layout()
+    fname = os.path.join(MC_DIR, "comparison_binomial_vs_enhanced.png")
+    plt.savefig(fname, dpi=DPI, bbox_inches="tight")
+    plt.close()
+    print(f"\n  Saved: {fname}")
 
 
 if __name__ == "__main__":

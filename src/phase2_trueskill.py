@@ -26,13 +26,10 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.stats import norm
+from paths import DB, data, plot_r, ensure_dirs
 
 np.random.seed(42)
-
-BASE = os.path.join(os.path.dirname(__file__), "..")
-DB   = os.path.join(BASE, "data", "processed", "twbc.db")
-OUT  = os.path.join(BASE, "output")
-os.makedirs(OUT, exist_ok=True)
+ensure_dirs()
 plt.style.use("seaborn-v0_8-whitegrid")
 DPI = 150
 
@@ -235,8 +232,8 @@ def _validate(conn, ratings_r12, elo_df):
         ORDER BY m.tournament_round, sr.round_number, vp.pairing_id
     """, conn)
     career_games = dict(zip(
-        pd.read_csv(f"{OUT}/player_career_stats.csv").player_nick,
-        pd.read_csv(f"{OUT}/player_career_stats.csv").total_games
+        pd.read_csv(data("player_career_stats.csv")).player_nick,
+        pd.read_csv(data("player_career_stats.csv")).total_games
     ))
     elo_r12, _ = compute_elo(pairings_all, career_games, max_round=2)
 
@@ -288,7 +285,7 @@ def _validate(conn, ratings_r12, elo_df):
               f" {r.actual:>8}")
     print(f"\n  TrueSkill accuracy: {ts_acc:.1%}  ({df.ts_ok.sum()}/{len(df)})")
     print(f"  Elo      accuracy: {elo_acc:.1%}  ({df.elo_ok.sum()}/{len(df)})")
-    df.to_csv(f"{OUT}/trueskill_validation_r3.csv", index=False)
+    df.to_csv(data("trueskill_validation_r3.csv"), index=False)
     return ts_acc, elo_acc
 
 
@@ -312,9 +309,9 @@ def _plot_ratings(ts_df, top_n=20):
     ax.set_title(f"TrueSkill — Top {top_n} Players (bar=conservative, error=95% CI)")
     ax.legend(fontsize=9)
     plt.tight_layout()
-    plt.savefig(f"{OUT}/plot_trueskill_ratings.png", dpi=DPI, bbox_inches="tight")
+    plt.savefig(plot_r("plot_trueskill_ratings.png"), dpi=DPI, bbox_inches="tight")
     plt.close()
-    print(f"  Saved: plot_trueskill_ratings.png")
+    print(f"  Saved: plots/ratings/plot_trueskill_ratings.png")
 
 
 def _plot_vs_elo(vs_df):
@@ -334,9 +331,9 @@ def _plot_vs_elo(vs_df):
     ax.set_xlabel("Elo Rank"); ax.set_ylabel("TrueSkill Rank")
     ax.set_title("TrueSkill vs Elo Ranking  (bubble=career games)")
     plt.tight_layout()
-    plt.savefig(f"{OUT}/plot_ts_vs_elo.png", dpi=DPI, bbox_inches="tight")
+    plt.savefig(plot_r("plot_ts_vs_elo.png"), dpi=DPI, bbox_inches="tight")
     plt.close()
-    print(f"  Saved: plot_ts_vs_elo.png")
+    print(f"  Saved: plots/ratings/plot_ts_vs_elo.png")
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -349,8 +346,8 @@ def run():
     print("=" * 60)
 
     conn   = sqlite3.connect(DB)
-    career = pd.read_csv(f"{OUT}/player_career_stats.csv")
-    elo_df = pd.read_csv(f"{OUT}/elo_ratings_final.csv")
+    career = pd.read_csv(data("player_career_stats.csv"))
+    elo_df = pd.read_csv(data("elo_ratings_final.csv"))
 
     pairings  = _load_pairings(conn)
     draw_prob = (pairings.winner == "Draw").sum() / len(pairings)
@@ -370,8 +367,8 @@ def run():
     ts_df = _build_df(ratings_full, conn, career)
     vs_df = _build_vs_elo(ts_df, elo_df)
 
-    ts_df.to_csv(f"{OUT}/trueskill_ratings.csv", index=False)
-    vs_df.to_csv(f"{OUT}/trueskill_vs_elo.csv",  index=False)
+    ts_df.to_csv(data("trueskill_ratings.csv"), index=False)
+    vs_df.to_csv(data("trueskill_vs_elo.csv"),  index=False)
     print(f"\nSaved: trueskill_ratings.csv  |  trueskill_vs_elo.csv")
 
     # Top 15

@@ -1,0 +1,10 @@
+match_id,team_a,team_b,actual,elo_pred,ts_pred,bt_pred,p_elo,p_ts,p_bt,majority,avg_pred,p_avg,elo_ok,ts_ok,bt_ok,majority_ok,avg_ok,agree_count
+19,Czechia A,Team International B,A,A,A,A,0.5107,0.5838,0.6582,A,A,0.5842,True,True,True,True,True,3
+20,Czechia B,Poland A,B,A,B,B,0.501,0.4403,0.0288,B,B,0.3234,False,True,True,True,True,2
+21,Czechia C,Poland B,B,B,A,A,0.4921,0.5221,0.8847,A,A,0.633,True,False,False,False,False,1
+22,Czechia D,Hungary A,B,B,B,B,0.4826,0.3633,0.1372,B,B,0.3277,True,True,True,True,True,3
+23,Czechia F,Slovakia,B,A,A,B,0.5006,0.5333,0.339,A,B,0.4576,False,False,True,False,True,1
+24,Hungary B,Team International D,A,B,B,B,0.4754,0.2607,0.3383,B,B,0.3581,False,False,False,False,False,0
+25,Hungary C,China,B,B,B,B,0.4657,0.1915,0.1667,B,B,0.2746,True,True,True,True,True,3
+26,Russia,Team International A,B,A,A,A,0.5303,0.6677,0.545,A,A,0.581,False,False,False,False,False,0
+27,Team International C,Czechia E,B,B,B,B,0.4988,0.4714,0.1697,B,B,0.38,True,True,True,True,True,3

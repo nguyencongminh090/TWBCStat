@@ -12,17 +12,16 @@ import seaborn as sns
 from phase2_elo import compute_elo
 
 np.random.seed(42)
-DB = os.path.join(os.path.dirname(__file__), '..', 'data', 'processed', 'twbc.db')
-OUT = os.path.join(os.path.dirname(__file__), '..', 'output')
-os.makedirs(OUT, exist_ok=True)
+from paths import DB, OUT, data, plot_m, ensure_dirs
+ensure_dirs()
 plt.style.use("seaborn-v0_8-whitegrid")
 DPI = 150
 
 def run():
     conn = sqlite3.connect(DB)
 
-    career = pd.read_csv(f"{OUT}/player_career_stats.csv")
-    elo_df = pd.read_csv(f"{OUT}/elo_ratings_final.csv")
+    career = pd.read_csv(data("player_career_stats.csv"))
+    elo_df = pd.read_csv(data("elo_ratings_final.csv"))
 
     # ── 3.1 Adjusted Efficiency ──
     print("Step 3.1 — Adjusted Efficiency")
