@@ -1,0 +1,27 @@
+round,team_a,team_b,p_team_a,p_team_b,p_draw,favourite,p_favourite,actual_winner,is_upset,mean_margin
+1,Czechia A,China,0.9567,0.0267,0.0166,Czechia A,0.9567,Czechia A,False,18.5
+1,Czechia D,Hungary C,0.9287,0.048,0.0233,Czechia D,0.9287,Czechia D,False,16.2
+1,Hungary B,Hungary A,0.0491,0.9287,0.0222,Hungary A,0.9287,Hungary A,False,-16.2
+1,Poland A,Czechia E,0.9764,0.0151,0.0085,Poland A,0.9764,Poland A,False,21.1
+1,Slovakia,Czechia B,0.3303,0.5934,0.0763,Czechia B,0.5934,Czechia B,False,-3.5
+1,Team International C,Russia,0.0182,0.9721,0.0097,Russia,0.9721,Russia,False,-20.6
+1,Team International D,Czechia C,0.8022,0.149,0.0488,Team International D,0.8022,Czechia C,True,9.8
+2,China,Team International A,0.2054,0.7366,0.058,Team International A,0.7366,Team International A,False,-7.6
+2,Czechia B,Czechia D,0.9167,0.0567,0.0266,Czechia B,0.9167,Czechia B,False,15.5
+2,Czechia C,Poland A,0.0114,0.9812,0.0074,Poland A,0.9812,Poland A,False,-22.1
+2,Czechia E,Slovakia,0.1794,0.763,0.0576,Slovakia,0.763,Slovakia,False,-8.5
+2,Czechia F,Team International D,0.1459,0.8043,0.0498,Team International D,0.8043,Team International D,False,-9.4
+2,Hungary A,Czechia A,0.2593,0.6766,0.0641,Czechia A,0.6766,Hungary A,True,-5.6
+2,Hungary C,Hungary B,0.0491,0.9284,0.0225,Hungary B,0.9284,Hungary B,False,-16.0
+2,Russia,Poland B,0.9183,0.0559,0.0258,Russia,0.9183,Russia,False,15.3
+2,Team International B,Team International C,0.7227,0.2176,0.0597,Team International B,0.7227,Team International B,False,7.1
+3,Czechia A,Team International B,0.9345,0.0431,0.0224,Czechia A,0.9345,Czechia A,False,16.3
+3,Czechia B,Poland A,0.1595,0.7892,0.0513,Poland A,0.7892,Poland A,False,-9.4
+3,Czechia C,Poland B,0.2649,0.6623,0.0728,Poland B,0.6623,Poland B,False,-5.3
+3,Czechia D,Hungary A,0.0649,0.9068,0.0283,Hungary A,0.9068,Hungary A,False,-14.7
+3,Czechia F,Slovakia,0.0803,0.8866,0.0331,Slovakia,0.8866,Slovakia,False,-13.1
+3,Hungary B,Team International D,0.1946,0.7489,0.0565,Team International D,0.7489,Hungary B,True,-7.7
+3,Hungary C,China,0.0189,0.9713,0.0098,China,0.9713,China,False,-20.4
+3,Russia,Team International A,0.4724,0.4504,0.0772,Russia,0.4724,Team International A,True,0.3
+3,Team International C,Czechia E,0.2828,0.6493,0.0679,Czechia E,0.6493,Czechia E,False,-5.0
+4,Hungary B,Czechia B,0.1345,0.805,0.0605,Czechia B,0.805,Czechia B,False,-8.2

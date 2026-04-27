@@ -1,0 +1,10 @@
+match_id,team_a,team_b,ts_pred,elo_pred,actual,ts_ok,elo_ok
+19,Czechia A,Team International B,A,A,A,True,True
+20,Czechia B,Poland A,B,A,B,True,False
+21,Czechia C,Poland B,A,B,B,False,True
+22,Czechia D,Hungary A,B,B,B,True,True
+23,Czechia F,Slovakia,A,A,B,False,False
+24,Hungary B,Team International D,B,B,A,False,False
+25,Hungary C,China,B,B,B,True,True
+26,Russia,Team International A,A,A,B,False,False
+27,Team International C,Czechia E,B,B,B,True,True

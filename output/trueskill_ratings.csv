@@ -1,0 +1,67 @@
+nick,mu,sigma,conservative,full_name,team,total_games,career_efficiency,ts_rank
+wbcpuholek,38.8276,3.9872,26.8661,Michał Zajk,Poland A,96.0,0.7708,1
+wbcquantum,38.5066,4.0939,26.225,Adrian Fitzermann,Poland A,72.0,0.8889,2
+wbczoli,38.5353,4.1594,26.057,Zoltán László,Hungary A,96.0,0.901,3
+wbcbeetle,38.4178,4.214,25.7758,Michał Żukowski,Poland A,84.0,0.8393,4
+wbcmatiss,38.0065,4.1686,25.5006,Matīss Riherts,Team International A,72.0,0.7431,5
+wbcbromozel,30.8768,2.1223,24.5098,Ilya Katsev,Russia,48.0,0.75,6
+wbcd,33.1262,2.9353,24.3202,František Fňukal,Czechia A,108.0,0.7083,7
+wbcnguyenminh,32.6696,2.9545,23.806,Nguyễn Công Minh,Team International D,96.0,0.724,8
+wbca,33.3894,3.3128,23.451,Adam Horváth,Czechia A,108.0,0.6991,9
+wbcheater,29.3464,2.2609,22.5636,Łukasz Majksner,Team International A,36.0,0.5278,10
+wbcg3m,37.0598,4.833,22.5608,Igor Eged,Slovakia,108.0,0.7454,11
+wbcc,32.719,3.5695,22.0104,Petr Žižka,Czechia A,108.0,0.7037,12
+wbc3ifndef,31.4467,3.3507,21.3946,Jakub Horák,Czechia B,132.0,0.5455,13
+wbcbb,35.7545,4.8178,21.3012,Bogdan Brachaczek,Poland A,72.0,0.8333,14
+wbcmartez,31.0619,3.3822,20.9154,Martin Muzika,Czechia B,132.0,0.6742,15
+wbciwbtc,30.4188,3.3793,20.2809,Lukáš Souček,Czechia B,132.0,0.5985,16
+wbcfurla,30.8492,3.5994,20.0509,Ilya Muratov,Russia,108.0,0.6944,17
+wbcplayer,28.909,3.3872,18.7473,Li Fuwen,Team International D,108.0,0.5741,18
+wbcmark,27.8104,3.0677,18.6072,Márk Horváth,Hungary A,60.0,0.55,19
+wbciron,28.5357,3.5075,18.0131,Zoltán Sonkoly,Hungary A,96.0,0.6771,20
+wbcalleb,29.8495,4.1237,17.4784,Alexey Lebedev,Russia,96.0,0.6667,21
+wbclojzeidon,28.2491,3.5989,17.4523,Alois Mikeš,Czechia C,108.0,0.4769,22
+wbcyu20,27.0493,3.3232,17.0798,Liu Wenhao,China,108.0,0.6019,23
+wbcmk108,28.7509,4.0902,16.4802,Denis Kachaev,Russia,72.0,0.5903,24
+wbcciaran,31.594,5.3295,15.6054,Ciarán Lucey,Hungary A,72.0,0.6806,25
+wbckremufka,27.8212,4.1446,15.3873,Szczepan Łukasik,Team International A,60.0,0.5833,26
+wbcdeafbat,23.345,2.8472,14.8034,Jan Kopecký,Czechia E,108.0,0.5278,27
+wbcshpek,23.416,3.0141,14.3738,Radim Kostlivý,Czechia E,108.0,0.4167,28
+wbcsiwer,26.3919,4.0092,14.3643,Michał Pietrusiak,Poland B,72.0,0.5139,29
+wbcrostas,25.6599,3.7899,14.2903,Ferenc Rostás,Hungary B,84.0,0.4762,30
+wbcperoxid,22.2035,2.6715,14.1891,Štěpán Tesařík,Czechia C,108.0,0.3981,31
+wbccoldmind,21.9072,2.624,14.0351,Stanislav Hyžík jr.,Team International C,108.0,0.3611,32
+wbcangst,21.6363,2.6496,13.6876,Piotr Małowiejski,Poland B,72.0,0.4028,33
+wbctasemnice,25.7072,4.1112,13.3735,Tomáš Palacký,Czechia D,96.0,0.4792,34
+wbcbogimp,25.5736,4.1823,13.0266,Anton Efremov,Team International B,72.0,0.4792,35
+wbcset,25.395,4.2282,12.7105,Konstantin Solomatin,Team International B,72.0,0.5208,36
+wbcashot,25.6908,4.3643,12.5978,Ashot Avetisyan,Team International A,48.0,0.6875,37
+wbcpeaceman,26.4566,4.6561,12.4884,Paweł Nowak,Poland B,36.0,0.6111,38
+wbcwonderwall,25.5652,4.4031,12.3558,Josef Holba,Czechia D,72.0,0.4861,39
+wbcpangbai,24.9078,4.3745,11.7842,Zhang Haoxiang,China,72.0,0.6528,40
+wbcgenghis,21.7206,3.4168,11.4702,Milán Nagy,Slovakia,108.0,0.463,41
+wbcnirvana,21.3636,3.5188,10.807,Róbert Pátkai,Hungary B,132.0,0.5076,42
+wbclasek,24.9076,4.83,10.4175,Zoltán Menyhárt,Hungary B,60.0,0.6167,43
+wbcdistilfire,19.6883,3.1702,10.1776,Petr Podolský,Czechia C,108.0,0.3611,44
+wbcfojtman,21.1766,4.0566,9.0067,Jakub Fojtík,Czechia D,96.0,0.401,45
+wbcasz,20.1506,3.7301,8.9603,Gábor Nagy,Hungary B,120.0,0.4958,46
+wbcgeordie,16.9839,3.0635,7.7935,Stanislav Hyžík sr.,Team International C,84.0,0.3452,47
+wbckakosik,17.6409,3.3493,7.5929,Eva Orlova,Team International B,48.0,0.2708,48
+wbcmichi,17.7074,3.4905,7.2358,Michal Ferdinandy,Slovakia,108.0,0.4259,49
+wbcvotocek,19.755,4.206,7.1371,Jakub Šalajka,Czechia F,72.0,0.4792,50
+wbchajnal,25.0619,6.1039,6.7503,Hajnalka Kovács,Team International B,24.0,0.4583,51
+wbcuida,18.6062,3.9676,6.7033,Liu Xiangbo,China,108.0,0.4074,52
+wbcpiggi,20.0722,4.6821,6.026,Matěj Holub,Czechia D,60.0,0.4,53
+wbcadelstepan,15.0393,4.0826,2.7916,Libor Krejčíř,Czechia F,72.0,0.2917,54
+wbcskoupy,14.5394,4.3535,1.4789,Vít Jiřík,Czechia F,60.0,0.2333,55
+wbcpurkys,12.2139,3.7797,0.8747,Jan Purkrábek,Czechia E,108.0,0.2685,56
+wbccrosslet,18.8635,6.015,0.8185,Karol Podwyszyński,Poland B,36.0,0.1389,57
+wbcfuzaty,19.9311,6.563,0.2422,Michal Holec,Team International C,24.0,0.0417,58
+wbcseabow,17.9634,6.1453,-0.4724,Jana Adámková,Team International C,36.0,0.1111,59
+wbcmulan,15.0278,5.3883,-1.1371,Bai Liu,Team International D,36.0,0.0278,60
+wbccsaba,11.0805,4.1091,-1.2469,Csaba Kamarás,Hungary C,108.0,0.037,61
+wbc366,16.5435,5.9923,-1.4335,Wang Haoran,China,36.0,0.0278,62
+wbc1211,12.9616,4.8346,-1.5421,Wang Siyuan,Team International D,72.0,0.0972,63
+wbctorpe,10.405,4.083,-1.8439,M. Nándor Halena,Hungary C,108.0,0.0278,64
+wbckaktuszka,10.5036,4.1329,-1.8951,Krisztina Kamarás,Hungary C,108.0,0.037,65
+wbcrichi,10.7596,4.3509,-2.2931,Richard Červenka,Team International C,72.0,0.0694,66
